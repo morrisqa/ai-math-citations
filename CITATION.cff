@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this data or code, please cite it as below."
+title: "Citation practices in AI-generated mathematics"
+type: dataset
+authors:
+  - family-names: Morris
+    given-names: Quinn
+    affiliation: Appalachian State University
+    orcid: "https://orcid.org/0000-0002-6892-1848"
+    website: "https://mathsci.appstate.edu/people/quinn-morris"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - citation analysis
+  - bibliometrics
+  - AI-generated research
+  - mathematics
+  - arXiv

@@ -4,7 +4,13 @@ Does AI-generated mathematical research cite different sources, or use its sourc
 
 This project compares the reference lists of the 722 preprints OpenAI released in [openai/math](https://github.com/openai/math) (September–October 2026) with a subject-matched sample of human-written arXiv papers from 2020–2022, before LLM-assisted writing was common.
 
-**Status:** work in progress. The AI corpus is complete; the human comparison sample is being collected.
+**Status:** work in progress. Preliminary results use a 1:1 subject-matched human sample (684 papers); the 2:1 sample is being collected. See [`data/analysis/summary.md`](data/analysis/summary.md).
+
+## Dashboard
+
+An interactive summary lives in [`docs/index.html`](docs/index.html) and is published with GitHub Pages (**Settings → Pages → Deploy from a branch → `main`, folder `/docs`**). It reads `docs/data/`, which `scripts/analyze.py` refreshes. Each table on the page links to [Datasette Lite](https://lite.datasette.io/), so readers can query the full CSVs with SQL in the browser.
+
+To preview locally: `cd docs && python3 -m http.server`, then open http://localhost:8000.
 
 ## Data
 
@@ -13,15 +19,28 @@ This project compares the reference lists of the 722 preprints OpenAI released i
 | `data/openai_math_citations.csv` | 17,957 references extracted from the 722 OpenAI preprints, one row per reference per preprint |
 | `data/ai_preprint_subjects.csv` | Inferred arXiv subject category for each OpenAI preprint |
 | `data/arxiv_categories_of_cited_works.csv` | Primary arXiv category of every arXiv paper the OpenAI preprints cite |
-| `data/human_candidates.csv` | Shuffled, stratified candidate list for the human sample *(in progress)* |
-| `data/human_sample_log.csv` | Outcome for every human candidate examined *(in progress)* |
-| `data/human_arxiv_citations.csv` | References extracted from the human sample *(in progress)* |
+| `data/ai_cross_citations.csv` | References from OpenAI preprints to other OpenAI preprints |
+| `data/doi_check_ai.csv` | Registry check of every DOI cited by the OpenAI preprints *(in progress)* |
+| `data/doi_check_ai_flags_for_review.csv` | Distinct flagged DOIs, for manual adjudication |
+| `data/human_candidates.csv` | Shuffled, stratified candidate list for the human sample |
+| `data/human_sample_log.csv` | Downloader outcome for every human candidate examined |
+| `data/human_sample.csv` | Final selection: first N usable candidates per subject in random-rank order |
+| `data/human_arxiv_citations.csv` | References extracted from the selected human papers |
+| `data/ai_intext_citations.csv`, `data/human_intext_citations.csv` | Every in-text citation with its pinpoint, section and proof context |
+| `data/analysis/` | Paper-level metrics, corpus comparison (`summary.md`) and dashboard data (`summary.json`) |
 
 Column definitions, sampling design, extraction rules and known limitations are in **[METHODOLOGY.md](METHODOLOGY.md)**.
 
 ## Reproducing
 
-The scripts in `scripts/` use only the Python 3 standard library. See [METHODOLOGY.md §5](METHODOLOGY.md#5-reproducing-the-data) for the full pipeline. Raw downloads (the OpenAI repository and arXiv LaTeX sources) are kept in `data/raw/` and not committed.
+The scripts in `scripts/` use only the Python 3 standard library. See [METHODOLOGY.md §7](METHODOLOGY.md#7-reproducing-the-data) for the full pipeline. Raw downloads (the OpenAI repository and arXiv LaTeX sources) are kept in `data/raw/` and not committed.
+
+## Author
+
+Quinn Morris, Department of Mathematical Sciences, Appalachian State University
+[ORCID 0000-0002-6892-1848](https://orcid.org/0000-0002-6892-1848) · [Profile and contact](https://mathsci.appstate.edu/people/quinn-morris)
+
+To cite this work, use the "Cite this repository" button on GitHub, which reads [CITATION.cff](CITATION.cff).
 
 ## License
 
