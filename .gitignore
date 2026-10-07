@@ -1,0 +1,5 @@
+# Raw downloads: the OpenAI repo clone (~3 GB) and arXiv sources (authors' licences)
+data/raw/
+__pycache__/
+*.pyc
+.DS_Store
