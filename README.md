@@ -22,3 +22,10 @@ Column definitions, sampling design, extraction rules and known limitations are 
 ## Reproducing
 
 The scripts in `scripts/` use only the Python 3 standard library. See [METHODOLOGY.md §5](METHODOLOGY.md#5-reproducing-the-data) for the full pipeline. Raw downloads (the OpenAI repository and arXiv LaTeX sources) are kept in `data/raw/` and not committed.
+
+## License
+
+- **Code** (`scripts/`): [MIT](LICENSE).
+- **Data and documentation** (`data/`, `README.md`, `METHODOLOGY.md`, and any analysis write-ups): [CC BY 4.0](LICENSE-DATA). Please credit "Quinn Morris, *Citation practices in AI-generated mathematics*" and link to this repository.
+
+The CSVs contain bibliographic metadata extracted from third-party works: the OpenAI preprints ([openai/math](https://github.com/openai/math), Apache 2.0) and arXiv papers, which remain under their authors' licences. CC BY 4.0 applies to this project's own contributions (selection, extraction, cleaning and derived fields). It does not grant any rights in those underlying works.
