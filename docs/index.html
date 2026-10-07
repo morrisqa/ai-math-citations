@@ -59,6 +59,7 @@ main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
 header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
 header p { margin: 0 0 6px; color: var(--text-secondary); max-width: 760px; }
 .meta { font-size: 13px; color: var(--text-muted); }
+.takeaway { font-size: 17px; line-height: 1.45; color: var(--text-primary) !important; margin: 14px 0 10px !important; max-width: 760px; }
 .status { display: inline-block; margin-top: 10px; padding: 4px 10px; border: 1px solid var(--border);
   border-radius: 999px; font-size: 13px; color: var(--text-secondary); }
 h2 { font-size: 19px; margin: 40px 0 4px; }
@@ -111,7 +112,8 @@ footer a { color: inherit; }
 <header>
   <h1>How does AI-generated mathematics cite the literature?</h1>
   <p>Citation behaviour in the <span id="n-ai">722</span> preprints OpenAI released in <a href="https://github.com/openai/math">openai/math</a> (September–October 2026), compared with a subject-matched random sample of <span id="n-human">–</span> human-written arXiv papers whose first version was posted in 2020–2022.</p>
-  <p class="meta">Every metric is computed per paper and then averaged. Differences are AI minus human, with 95% bootstrap confidence intervals.</p>
+  <p class="takeaway">The AI papers cite the literature like a toolbox: they usually name the exact theorem or lemma they use, cite one work at a time, and cite inside proofs about twice as often as human authors.</p>
+  <p class="meta">Every measure is computed per paper and then averaged across papers. Ranges are 95% bootstrap confidence intervals. <a id="method-link" href="#">How this was measured</a></p>
   <span class="status" id="status">Loading…</span>
 </header>
 
@@ -122,7 +124,7 @@ footer a { color: inherit; }
 
 <section aria-labelledby="h-metrics">
   <h2 id="h-metrics">How the two corpora cite</h2>
-  <p class="lede">Each row compares the average paper in each corpus. The further apart the dots, the bigger the difference.</p>
+  <p class="lede">Each row compares the average paper in each corpus; the further apart the dots, the bigger the difference. The right-hand column gives the gap (AI minus human) in percentage points. Hover over a row for its confidence interval.</p>
   <div class="card">
     <div class="legend"><span><i class="swatch sw-ai"></i>AI (OpenAI preprints)</span><span><i class="swatch sw-human"></i>Human (arXiv 2020–22)</span></div>
     <div id="chart-metrics"></div>
@@ -149,7 +151,7 @@ footer a { color: inherit; }
 
 <section aria-labelledby="h-subject">
   <h2 id="h-subject">Is it the same in every field?</h2>
-  <p class="lede">Averages within each arXiv subject, for subjects with at least 10 papers in both corpora. Choose a measure:</p>
+  <p class="lede">Averages within each arXiv subject, for subjects with at least 10 papers in both corpora; numbers in brackets are AI / human papers. Subjects are sorted by the size of the gap. Choose a measure:</p>
   <div class="card">
     <div class="controls" role="group" aria-label="Measure" id="subject-controls"></div>
     <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
@@ -205,6 +207,13 @@ const num = (v, d = 1) => v == null ? "–" : v.toFixed(d);
 const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const color = { ai: () => css("--series-ai"), human: () => css("--series-human") };
 const NAME = { ai: "AI", human: "Human" };
+const signed = (v, d = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d);
+// "+40.7 points (95% CI +38.4 to +43.0)" for shares; "−5.0 (…)" otherwise.
+function diffText(m, d = 1) {
+  const sc = m.kind === "share" ? 100 : 1, unit = m.kind === "share" ? " points" : "";
+  const [lo, hi] = m.diff_ci95;
+  return `${signed(sc * m.diff_mean, d)}${unit} (95% CI ${signed(sc * lo, d)} to ${signed(sc * hi, d)})`;
+}
 
 function el(tag, attrs = {}, parent) {
   const e = document.createElementNS(NS, tag);
@@ -245,19 +254,25 @@ function table(container, head, rows, numeric = []) {
 }
 
 // Dumbbell: one row per item, two dots on a shared x scale.
-function dumbbell(container, items, { min = 0, max = 1, fmt = pct, ticks = [0, .25, .5, .75, 1], labelW = 260, rowH = 34, right = 0 } = {}) {
+function dumbbell(container, items, { min = 0, max = 1, fmt = pct, ticks = [0, .25, .5, .75, 1], labelW = 260, rowH = 34, right = 0, noteHead = "", title = "" } = {}) {
   const W = container.clientWidth, narrow = W < 560;
   const lw = narrow ? 0 : labelW, top = 18, lrow = narrow ? 16 : 0, rh = rowH + lrow;
   const H = top + items.length * rh + 10;
   const x0 = lw + 8, x1 = W - 12 - right;
   const sx = (v) => x0 + (Math.max(min, Math.min(max, v)) - min) / (max - min) * (x1 - x0);
-  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img" });
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": title || "Comparison of AI and human papers" });
+  if (noteHead) text(svg, W - 4, top - 8, noteHead, { "text-anchor": "end", class: "muted" });
   for (const t of ticks) {
     el("line", { x1: sx(t), x2: sx(t), y1: top - 4, y2: H - 6, class: "grid" }, svg);
     text(svg, sx(t), top - 8, fmt(t, 0), { "text-anchor": "middle", class: "muted" });
   }
   items.forEach((it, i) => {
     const yTop = top + i * rh, y = yTop + lrow + rowH / 2;
+    if (it.header) {
+      text(svg, 0, y + 4, it.header, { "font-weight": 600, fill: css("--text-primary") });
+      return;
+    }
+    if (it.note) text(svg, W - 4, y + 4, it.note, { "text-anchor": "end", "font-weight": 600, fill: css("--text-primary") });
     if (narrow) text(svg, 0, yTop + 13, it.label, { "font-size": 12 });
     else text(svg, lw, y + 4, it.label, { "text-anchor": "end" });
     if (it.ai == null || it.human == null) return;
@@ -309,7 +324,7 @@ function groupedBars(container, cats, { title, fmt = pct, yMax } = {}) {
 function lines(container, xs, series, { title, fmt = pct } = {}) {
   const W = container.clientWidth, H = 260, top = 28, bottom = 36, left = 44, right = 12;
   const max = niceMax(Math.max(...Object.values(series).flat()));
-  const sx = (i) => left + i / (xs.length - 1) * (W - left - right);
+  const n = xs.length, sx = (i) => left + (i + 0.5) / n * (W - left - right);  // bin midpoints
   const sy = (v) => top + (1 - v / max) * (H - top - bottom);
   const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": title });
   text(svg, 0, 14, title, { "font-weight": 600, fill: css("--text-primary") });
@@ -318,23 +333,27 @@ function lines(container, xs, series, { title, fmt = pct } = {}) {
     el("line", { x1: left, x2: W - right, y1: sy(v), y2: sy(v), class: i ? "grid" : "axis" }, svg);
     text(svg, left - 6, sy(v) + 4, fmt(v, 0), { "text-anchor": "end", class: "muted" });
   }
-  [0, 5, 10, 15, 19].forEach(i => text(svg, sx(i), H - bottom + 18, xs[i], { "text-anchor": "middle", class: "muted" }));
+  [0, 25, 50, 75, 100].forEach(p => text(svg, left + p / 100 * (W - left - right), H - bottom + 18, p + "%", { "text-anchor": "middle", class: "muted" }));
   text(svg, (left + W - right) / 2, H - 4, "Position in the paper (start → end)", { "text-anchor": "middle", class: "muted" });
   for (const [k, vals] of Object.entries(series)) {
     el("path", { d: vals.map((v, i) => `${i ? "L" : "M"}${sx(i)},${sy(v)}`).join(""), fill: "none",
       stroke: color[k](), "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    // Direct label where this series leads the other by the most, just above its line.
     const other = Object.entries(series).find(([o]) => o !== k)[1];
-    text(svg, sx(1) + 6, sy(vals[1]) + (vals[1] >= other[1] ? -8 : 16), NAME[k], { "font-size": 12, "font-weight": 600 });
+    let at = 0;
+    vals.forEach((v, i) => { if (v - other[i] > vals[at] - other[at]) at = i; });
+    text(svg, sx(at) + (at === 0 ? 8 : 0), sy(vals[at]) - 8, NAME[k],
+      { "font-size": 12, "font-weight": 600, fill: css("--text-primary"), "text-anchor": at === 0 ? "start" : "middle" });
   }
   const cross = el("line", { y1: top, y2: H - bottom, class: "axis", visibility: "hidden" }, svg);
   const dots = Object.keys(series).map(k => el("circle", { r: 5, fill: color[k](), stroke: css("--surface-1"), "stroke-width": 2, visibility: "hidden" }, svg));
   const hit = el("rect", { x: left, y: top, width: W - left - right, height: H - top - bottom, fill: "transparent" }, svg);
   hit.addEventListener("pointermove", (e) => {
     const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width;
-    const i = Math.max(0, Math.min(xs.length - 1, Math.round((px - left) / (W - left - right) * (xs.length - 1))));
+    const i = Math.max(0, Math.min(n - 1, Math.floor((px - left) / (W - left - right) * n)));
     cross.setAttribute("x1", sx(i)); cross.setAttribute("x2", sx(i)); cross.setAttribute("visibility", "visible");
     Object.keys(series).forEach((k, j) => { dots[j].setAttribute("cx", sx(i)); dots[j].setAttribute("cy", sy(series[k][i])); dots[j].setAttribute("visibility", "visible"); });
-    showTip(e, `${xs[i]}–${xs[i + 1] ?? "100%"} of the text`, Object.keys(series).map(k => ({ series: k, text: `${NAME[k]}: ${fmt(series[k][i])} of citations` })));
+    showTip(e, `${i * 5}–${(i + 1) * 5}% of the way through the text`, Object.keys(series).map(k => ({ series: k, text: `${NAME[k]}: ${fmt(series[k][i])} of citations` })));
   });
   hit.addEventListener("pointerleave", () => { hideTip(); cross.setAttribute("visibility", "hidden"); dots.forEach(d => d.setAttribute("visibility", "hidden")); });
   container.replaceChildren(svg);
@@ -376,17 +395,16 @@ async function main() {
   $("#n-ai").textContent = S.n_papers.ai_all;
   $("#n-human").textContent = S.n_papers.human.toLocaleString();
   $("#status").textContent = S.n_papers.human
-    ? `Preliminary: ${S.n_papers.ai_matched} subject-labelled AI preprints vs ${S.n_papers.human} human papers`
+    ? `${S.n_papers.human < 1.5 * S.n_papers.ai_matched ? "Preliminary · " : ""}${S.n_papers.ai_matched} subject-matched AI preprints vs ${S.n_papers.human.toLocaleString()} human papers`
     : "Human comparison sample not yet available";
 
   // Headline tiles
   const tile = (key, label, fmt) => {
     const m = M[key]; if (!m || !m.human) return "";
-    const [lo, hi] = m.diff_ci95, sc = m.kind === "share" ? 100 : 1, u = m.kind === "share" ? " pp" : "";
     return `<div class="tile"><div class="label">${label}</div><div class="pair">
       <div><div class="v">${fmt(m.ai.mean)}</div><div class="who"><i class="swatch sw-ai"></i>AI</div></div>
       <div><div class="v">${fmt(m.human.mean)}</div><div class="who"><i class="swatch sw-human"></i>Human</div></div></div>
-      <div class="delta">Δ ${(sc * m.diff_mean).toFixed(1)}${u} (95% CI ${(sc * lo).toFixed(1)} to ${(sc * hi).toFixed(1)})</div></div>`;
+      <div class="delta">AI − human: ${diffText(m)}</div></div>`;
   };
   $("#tiles").innerHTML =
     tile("share_pinpoint_specific", "Citations that name a specific theorem, section or page", v => pct(v, 0)) +
@@ -394,20 +412,34 @@ async function main() {
     tile("share_group_3plus", "Citations that bundle three or more works", v => pct(v, 1)) +
     tile("n_references", "References per paper", v => num(v, 0));
 
-  // Metric dumbbell
-  const shareKeys = ["share_pinpoint_specific", "share_pinpoint_result", "share_pinpoint_any", "share_in_proof",
-    "share_intro_or_front", "share_first_quarter", "share_group_3plus", "share_refs_cited_once",
-    "max_share_one_reference", "share_refs_recent_3y", "share_refs_classic_30y"];
-  const items = shareKeys.filter(k => M[k] && M[k].human).map(k => {
-    const m = M[k], [lo, hi] = m.diff_ci95;
-    return { label: m.label, ai: m.ai.mean, human: m.human.mean,
-      extra: `Difference ${(100 * m.diff_mean).toFixed(1)} pp (95% CI ${(100 * lo).toFixed(1)} to ${(100 * hi).toFixed(1)})` };
-  });
-  const drawMetrics = () => dumbbell($("#chart-metrics"), items, { labelW: 330 });
-  table($("#table-metrics"), ["Measure", "AI", "Human", "Difference (95% CI)"],
+  // Metric dumbbell, in two groups, each sorted by the size of the gap.
+  const groupsDef = [
+    ["Share of citations that…", [
+      ["share_pinpoint_specific", "name a specific result, section or page"],
+      ["share_pinpoint_result", "name a specific theorem, lemma, …"],
+      ["share_in_proof", "appear inside a proof"],
+      ["share_first_quarter", "appear in the first quarter of the text"],
+      ["share_intro_or_front", "appear in the abstract or introduction"],
+      ["share_group_3plus", "bundle three or more works"]]],
+    ["Share of references that…", [
+      ["share_refs_cited_once", "are cited only once"],
+      ["share_refs_recent_3y", "are at most 3 years old"],
+      ["share_refs_classic_30y", "are at least 30 years old"]]]];
+  const items = [];
+  for (const [head, rows] of groupsDef) {
+    items.push({ header: head });
+    rows.filter(([k]) => M[k] && M[k].human)
+      .map(([k, label]) => ({ label, ai: M[k].ai.mean, human: M[k].human.mean, m: M[k],
+        note: signed(100 * M[k].diff_mean, 0), extra: `AI − human: ${diffText(M[k])}` }))
+      .sort((a, b) => Math.abs(b.m.diff_mean) - Math.abs(a.m.diff_mean))
+      .forEach(it => items.push(it));
+  }
+  const drawMetrics = () => dumbbell($("#chart-metrics"), items,
+    { labelW: 300, right: 56, noteHead: "Gap", title: "Average paper, AI versus human" });
+  table($("#table-metrics"), ["Measure", "AI", "Human", "AI − human (95% CI)"],
     S.metrics.filter(m => m.human).map(m => {
-      const f = m.kind === "share" ? (v) => pct(v) : (v) => num(v, 2), sc = m.kind === "share" ? 100 : 1, u = m.kind === "share" ? " pp" : "";
-      return [m.label, f(m.ai.mean), f(m.human.mean), `${(sc * m.diff_mean).toFixed(1)}${u} (${(sc * m.diff_ci95[0]).toFixed(1)}, ${(sc * m.diff_ci95[1]).toFixed(1)})`];
+      const f = m.kind === "share" ? (v) => pct(v) : (v) => num(v, 2);
+      return [m.label, f(m.ai.mean), f(m.human.mean), diffText(m)];
     }), [1, 2, 3]);
 
   // Paper-level pinpoint histogram
@@ -423,7 +455,11 @@ async function main() {
   table($("#table-pinhist"), ["Citations pinpointed", "AI papers", "Human papers"], pinCats.map((c, i) => [bins[i], pct(c.ai), pct(c.human)]), [1, 2]);
 
   // Pinpoint mix
-  const mixOrder = [["result", "Theorem,\nlemma, …"], ["location", "Section,\nchapter"], ["page", "Page"], ["numbered", "Bare\nnumber"], ["other", "Other\nnote"], ["none", "No\npinpoint"]];
+  const mixOrder = [["result", "Theorem,\nlemma, …"], ["location", "Section,\nchapter"], ["page", "Page"], ["other", "Other"], ["none", "No\npinpoint"]];
+  for (const k of ["ai", "human"]) {  // bare numbers ("II.2.1") are rare; count them with other notes
+    S.pinpoint_mix[k].other = (S.pinpoint_mix[k].other || 0) + (S.pinpoint_mix[k].numbered || 0);
+    delete S.pinpoint_mix[k].numbered;
+  }
   const tot = (k) => Object.values(S.pinpoint_mix[k]).reduce((a, b) => a + b, 0) || 1;
   const mixCats = mixOrder.map(([k, l]) => ({ label: l, ai: (S.pinpoint_mix.ai[k] || 0) / tot("ai"), human: (S.pinpoint_mix.human[k] || 0) / tot("human") }));
   const drawPinMix = () => groupedBars($("#chart-pinmix"), mixCats, { title: "What citations point to (all citations)" });
@@ -480,6 +516,7 @@ async function main() {
 
   // Data links
   const info = repoInfo();
+  if (!info) $("#method-link").href = "../METHODOLOGY.md";
   const files = [["openai_math_citations.csv", "References in the OpenAI preprints"], ["human_arxiv_citations.csv", "References in the human sample"],
     ["ai_intext_citations.csv", "Every in-text citation (AI)"], ["human_intext_citations.csv", "Every in-text citation (human)"],
     ["analysis/paper_metrics.csv", "Per-paper metrics"], ["doi_check_ai.csv", "DOI check (AI)"], ["ai_cross_citations.csv", "Citations among OpenAI preprints"]];
@@ -489,6 +526,7 @@ async function main() {
     $("#data-links").innerHTML = "<tr><th>Table</th><th>Explore</th><th>Download</th></tr>" + files.map(([f, d]) =>
       `<tr><td>${d}</td><td><a href="https://lite.datasette.io/?csv=${encodeURIComponent(raw(f))}">Open in Datasette Lite</a></td><td><a href="${blob(f)}">${f}</a></td></tr>`).join("");
     $("#repo-link").href = `https://github.com/${info.owner}/${info.repo}`;
+    $("#method-link").href = `https://github.com/${info.owner}/${info.repo}/blob/main/METHODOLOGY.md`;
   } else {
     $("#data-links").innerHTML = "<tr><td>Links to the data appear when this page is served from GitHub Pages. Locally, the CSVs are in the repository's data/ folder.</td></tr>";
   }
