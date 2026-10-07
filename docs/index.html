@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Math Citations</title>
+<meta name="description" content="How 722 AI-generated mathematics preprints cite the literature, compared with subject-matched human-written arXiv papers.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --series-ai: #2a78d6;
+  --series-human: #eb6834;
+  --wash: rgba(11,11,11,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --series-ai: #3987e5;
+    --series-human: #d95926;
+    --wash: rgba(255,255,255,0.05);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface-1: #1a1a19;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255,255,255,0.10);
+  --series-ai: #3987e5;
+  --series-human: #d95926;
+  --wash: rgba(255,255,255,0.05);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--text-primary);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
+header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
+header p { margin: 0 0 6px; color: var(--text-secondary); max-width: 760px; }
+.meta { font-size: 13px; color: var(--text-muted); }
+.status { display: inline-block; margin-top: 10px; padding: 4px 10px; border: 1px solid var(--border);
+  border-radius: 999px; font-size: 13px; color: var(--text-secondary); }
+h2 { font-size: 19px; margin: 40px 0 4px; }
+.lede { margin: 0 0 14px; color: var(--text-secondary); max-width: 760px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 24px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.tile .label { font-size: 13px; color: var(--text-secondary); min-height: 40px; }
+.tile .pair { display: flex; gap: 18px; align-items: baseline; margin-top: 6px; }
+.tile .v { font-size: 30px; font-weight: 600; line-height: 1.1; }
+.tile .who { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+.tile .delta { margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+.swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.sw-ai { background: var(--series-ai); } .sw-human { background: var(--series-human); }
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px 16px 8px; }
+.legend { display: flex; gap: 16px; font-size: 13px; color: var(--text-secondary); margin: 0 0 8px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 10px; align-items: center; font-size: 13px; color: var(--text-secondary); }
+.controls button { font: inherit; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-secondary); cursor: pointer; }
+.controls button[aria-pressed="true"] { background: var(--wash); color: var(--text-primary); border-color: var(--axis); font-weight: 600; }
+svg { display: block; width: 100%; overflow: visible; }
+svg text { fill: var(--text-secondary); font-size: 12px; }
+svg .muted { fill: var(--text-muted); font-size: 11px; }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .axis { stroke: var(--axis); stroke-width: 1; }
+svg .hit { fill: transparent; cursor: default; }
+svg .hit:hover { fill: var(--wash); }
+details { margin: 8px 0 6px; font-size: 13px; color: var(--text-secondary); }
+summary { cursor: pointer; }
+table { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--grid); }
+th { color: var(--text-muted); font-weight: 600; }
+td.num, th.num { text-align: right; }
+.tip { position: fixed; pointer-events: none; z-index: 10; background: var(--surface-1); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 13px; max-width: 300px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12); display: none; }
+.tip .t { font-weight: 600; margin-bottom: 4px; }
+.tip .row { display: flex; align-items: center; gap: 6px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+a { color: var(--text-primary); text-decoration-color: var(--axis); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+.note { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+footer { margin-top: 48px; font-size: 13px; color: var(--text-muted); }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>How does AI-generated mathematics cite the literature?</h1>
+  <p>Citation behaviour in the <span id="n-ai">722</span> preprints OpenAI released in <a href="https://github.com/openai/math">openai/math</a> (September–October 2026), compared with a subject-matched random sample of <span id="n-human">–</span> human-written arXiv papers whose first version was posted in 2020–2022.</p>
+  <p class="meta">Every metric is computed per paper and then averaged. Differences are AI minus human, with 95% bootstrap confidence intervals.</p>
+  <span class="status" id="status">Loading…</span>
+</header>
+
+<section aria-labelledby="h-headline">
+  <h2 id="h-headline">Headline differences</h2>
+  <div class="tiles" id="tiles"></div>
+</section>
+
+<section aria-labelledby="h-metrics">
+  <h2 id="h-metrics">How the two corpora cite</h2>
+  <p class="lede">Each row compares the average paper in each corpus. The further apart the dots, the bigger the difference.</p>
+  <div class="card">
+    <div class="legend"><span><i class="swatch sw-ai"></i>AI (OpenAI preprints)</span><span><i class="swatch sw-human"></i>Human (arXiv 2020–22)</span></div>
+    <div id="chart-metrics"></div>
+    <details><summary>Show as table</summary><div id="table-metrics"></div></details>
+  </div>
+</section>
+
+<section aria-labelledby="h-pin">
+  <h2 id="h-pin">Pointing to specific results</h2>
+  <p class="lede">A pinpoint citation names the part of a work it relies on, as in <code>[BZ, Theorem 1.3]</code>. The left chart shows how many of each paper's citations are pinpointed; the right shows what they point to.</p>
+  <div class="two">
+    <div class="card">
+      <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
+      <div id="chart-pinhist"></div>
+      <details><summary>Show as table</summary><div id="table-pinhist"></div></details>
+    </div>
+    <div class="card">
+      <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
+      <div id="chart-pinmix"></div>
+      <details><summary>Show as table</summary><div id="table-pinmix"></div></details>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-subject">
+  <h2 id="h-subject">Is it the same in every field?</h2>
+  <p class="lede">Averages within each arXiv subject, for subjects with at least 10 papers in both corpora. Choose a measure:</p>
+  <div class="card">
+    <div class="controls" role="group" aria-label="Measure" id="subject-controls"></div>
+    <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
+    <div id="chart-subject"></div>
+    <details><summary>Show as table</summary><div id="table-subject"></div></details>
+  </div>
+</section>
+
+<section aria-labelledby="h-where">
+  <h2 id="h-where">Where citations appear, and how old the cited work is</h2>
+  <div class="two">
+    <div class="card">
+      <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
+      <div id="chart-position"></div>
+      <details><summary>Show as table</summary><div id="table-position"></div></details>
+    </div>
+    <div class="card">
+      <div class="legend"><span><i class="swatch sw-ai"></i>AI</span><span><i class="swatch sw-human"></i>Human</span></div>
+      <div id="chart-age"></div>
+      <details><summary>Show as table</summary><div id="table-age"></div></details>
+    </div>
+  </div>
+  <p class="note">Ages are measured from each citing paper's own year (2026 for the AI preprints, 2020–22 for the human papers), so human papers are not penalised for being unable to cite recent work.</p>
+</section>
+
+<section aria-labelledby="h-ai">
+  <h2 id="h-ai">The AI corpus on its own</h2>
+  <p class="lede">Two questions that need no human baseline: do the AI papers cite each other, and do their DOIs point to the works they claim?</p>
+  <div class="tiles" id="ai-tiles"></div>
+  <p class="note">DOI checks compare each cited DOI with its Crossref or DataCite record. Flagged cases include legitimate differences (a chapter cited under its book's DOI, translated titles) and are listed for manual review; they are not an error rate.</p>
+</section>
+
+<section aria-labelledby="h-data">
+  <h2 id="h-data">Explore the data</h2>
+  <p class="lede">Query the full tables in your browser with SQL (via <a href="https://lite.datasette.io/">Datasette Lite</a>), or download the CSVs.</p>
+  <div class="card links"><table id="data-links"></table></div>
+</section>
+
+<footer>
+  Quinn Morris, Appalachian State University · <a href="https://orcid.org/0000-0002-6892-1848">ORCID</a> ·
+  <a id="repo-link" href="#">Code, data and methodology</a> · Code MIT, data CC BY 4.0
+</footer>
+</main>
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+const themeParam = new URLSearchParams(location.search).get("theme");
+if (themeParam === "light" || themeParam === "dark") document.documentElement.dataset.theme = themeParam;
+const $ = (s) => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const pct = (v, d = 1) => v == null ? "–" : (100 * v).toFixed(d) + "%";
+const num = (v, d = 1) => v == null ? "–" : v.toFixed(d);
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const color = { ai: () => css("--series-ai"), human: () => css("--series-human") };
+const NAME = { ai: "AI", human: "Human" };
+
+function el(tag, attrs = {}, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function text(parent, x, y, s, attrs = {}) {
+  const t = el("text", { x, y, ...attrs }, parent);
+  t.textContent = s;
+  return t;
+}
+
+// Tooltip
+const tip = $("#tip");
+function showTip(evt, title, rows) {
+  tip.innerHTML = `<div class="t">${title}</div>` + rows.map(r =>
+    `<div class="row">${r.series ? `<i class="swatch sw-${r.series}"></i>` : ""}<span>${r.text}</span></div>`).join("");
+  tip.style.display = "block";
+  const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = evt.clientX + pad, y = evt.clientY + pad;
+  if (x + w > innerWidth - 8) x = evt.clientX - w - pad;
+  if (y + h > innerHeight - 8) y = evt.clientY - h - pad;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => tip.style.display = "none";
+function hover(target, title, rows) {
+  target.addEventListener("pointermove", (e) => showTip(e, title, rows));
+  target.addEventListener("pointerleave", hideTip);
+}
+
+function table(container, head, rows, numeric = []) {
+  const t = document.createElement("table");
+  t.innerHTML = "<thead><tr>" + head.map((h, i) => `<th class="${numeric.includes(i) ? "num" : ""}">${h}</th>`).join("") +
+    "</tr></thead><tbody>" + rows.map(r => "<tr>" + r.map((c, i) =>
+      `<td class="${numeric.includes(i) ? "num" : ""}">${c}</td>`).join("") + "</tr>").join("") + "</tbody>";
+  container.replaceChildren(t);
+}
+
+// Dumbbell: one row per item, two dots on a shared x scale.
+function dumbbell(container, items, { min = 0, max = 1, fmt = pct, ticks = [0, .25, .5, .75, 1], labelW = 260, rowH = 34, right = 0 } = {}) {
+  const W = container.clientWidth, narrow = W < 560;
+  const lw = narrow ? 0 : labelW, top = 18, lrow = narrow ? 16 : 0, rh = rowH + lrow;
+  const H = top + items.length * rh + 10;
+  const x0 = lw + 8, x1 = W - 12 - right;
+  const sx = (v) => x0 + (Math.max(min, Math.min(max, v)) - min) / (max - min) * (x1 - x0);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img" });
+  for (const t of ticks) {
+    el("line", { x1: sx(t), x2: sx(t), y1: top - 4, y2: H - 6, class: "grid" }, svg);
+    text(svg, sx(t), top - 8, fmt(t, 0), { "text-anchor": "middle", class: "muted" });
+  }
+  items.forEach((it, i) => {
+    const yTop = top + i * rh, y = yTop + lrow + rowH / 2;
+    if (narrow) text(svg, 0, yTop + 13, it.label, { "font-size": 12 });
+    else text(svg, lw, y + 4, it.label, { "text-anchor": "end" });
+    if (it.ai == null || it.human == null) return;
+    el("line", { x1: sx(it.ai), x2: sx(it.human), y1: y, y2: y, stroke: css("--axis"), "stroke-width": 2 }, svg);
+    for (const k of ["human", "ai"]) {
+      el("circle", { cx: sx(it[k]), cy: y, r: 6, fill: color[k](), stroke: css("--surface-1"), "stroke-width": 2 }, svg);
+    }
+    const hit = el("rect", { x: 0, y: yTop, width: W, height: rh, class: "hit", rx: 6 }, svg);
+    svg.insertBefore(hit, svg.firstChild);
+    hover(hit, it.label, [
+      { series: "ai", text: `AI: ${fmt(it.ai)}` }, { series: "human", text: `Human: ${fmt(it.human)}` },
+      ...(it.extra ? [{ text: it.extra }] : [])]);
+  });
+  container.replaceChildren(svg);
+}
+
+// Grouped vertical bars: categories on x, AI and human bars side by side.
+function groupedBars(container, cats, { title, fmt = pct, yMax } = {}) {
+  const W = container.clientWidth, H = 260, top = 28, bottom = 44, left = 44, right = 8;
+  const max = yMax ?? niceMax(Math.max(...cats.flatMap(c => [c.ai, c.human])));
+  const sy = (v) => top + (1 - v / max) * (H - top - bottom);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": title });
+  text(svg, 0, 14, title, { "font-weight": 600, fill: css("--text-primary") });
+  const nT = 4;
+  for (let i = 0; i <= nT; i++) {
+    const v = max * i / nT;
+    el("line", { x1: left, x2: W - right, y1: sy(v), y2: sy(v), class: i ? "grid" : "axis" }, svg);
+    text(svg, left - 6, sy(v) + 4, fmt(v, 0), { "text-anchor": "end", class: "muted" });
+  }
+  const band = (W - left - right) / cats.length, bw = Math.min(22, band / 2 - 6);
+  cats.forEach((c, i) => {
+    const cx = left + band * i + band / 2;
+    [["ai", -1], ["human", 1]].forEach(([k, side]) => {
+      const x = side < 0 ? cx - bw - 1 : cx + 1, y = sy(c[k]), h = Math.max(sy(0) - y, 0);
+      // Rounded data end, square at the baseline.
+      const r = Math.min(4, h, bw / 2);
+      el("path", { d: `M${x},${sy(0)} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${sy(0)} Z`, fill: color[k]() }, svg);
+    });
+    const lines = c.label.split("\n"), fs = band < 60 ? 9.5 : 11;
+    lines.forEach((ln, j) => text(svg, cx, H - bottom + 16 + j * 12, ln, { "text-anchor": "middle", "font-size": fs }));
+    const hit = el("rect", { x: cx - band / 2, y: top, width: band, height: H - top - bottom, class: "hit", rx: 4 }, svg);
+    svg.insertBefore(hit, svg.children[1]);
+    hover(hit, c.label.replace("\n", " "), [{ series: "ai", text: `AI: ${fmt(c.ai)}` }, { series: "human", text: `Human: ${fmt(c.human)}` }]);
+  });
+  container.replaceChildren(svg);
+}
+
+// Two lines over a 0–100% position axis, with crosshair.
+function lines(container, xs, series, { title, fmt = pct } = {}) {
+  const W = container.clientWidth, H = 260, top = 28, bottom = 36, left = 44, right = 12;
+  const max = niceMax(Math.max(...Object.values(series).flat()));
+  const sx = (i) => left + i / (xs.length - 1) * (W - left - right);
+  const sy = (v) => top + (1 - v / max) * (H - top - bottom);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": title });
+  text(svg, 0, 14, title, { "font-weight": 600, fill: css("--text-primary") });
+  for (let i = 0; i <= 4; i++) {
+    const v = max * i / 4;
+    el("line", { x1: left, x2: W - right, y1: sy(v), y2: sy(v), class: i ? "grid" : "axis" }, svg);
+    text(svg, left - 6, sy(v) + 4, fmt(v, 0), { "text-anchor": "end", class: "muted" });
+  }
+  [0, 5, 10, 15, 19].forEach(i => text(svg, sx(i), H - bottom + 18, xs[i], { "text-anchor": "middle", class: "muted" }));
+  text(svg, (left + W - right) / 2, H - 4, "Position in the paper (start → end)", { "text-anchor": "middle", class: "muted" });
+  for (const [k, vals] of Object.entries(series)) {
+    el("path", { d: vals.map((v, i) => `${i ? "L" : "M"}${sx(i)},${sy(v)}`).join(""), fill: "none",
+      stroke: color[k](), "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    const other = Object.entries(series).find(([o]) => o !== k)[1];
+    text(svg, sx(1) + 6, sy(vals[1]) + (vals[1] >= other[1] ? -8 : 16), NAME[k], { "font-size": 12, "font-weight": 600 });
+  }
+  const cross = el("line", { y1: top, y2: H - bottom, class: "axis", visibility: "hidden" }, svg);
+  const dots = Object.keys(series).map(k => el("circle", { r: 5, fill: color[k](), stroke: css("--surface-1"), "stroke-width": 2, visibility: "hidden" }, svg));
+  const hit = el("rect", { x: left, y: top, width: W - left - right, height: H - top - bottom, fill: "transparent" }, svg);
+  hit.addEventListener("pointermove", (e) => {
+    const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(xs.length - 1, Math.round((px - left) / (W - left - right) * (xs.length - 1))));
+    cross.setAttribute("x1", sx(i)); cross.setAttribute("x2", sx(i)); cross.setAttribute("visibility", "visible");
+    Object.keys(series).forEach((k, j) => { dots[j].setAttribute("cx", sx(i)); dots[j].setAttribute("cy", sy(series[k][i])); dots[j].setAttribute("visibility", "visible"); });
+    showTip(e, `${xs[i]}–${xs[i + 1] ?? "100%"} of the text`, Object.keys(series).map(k => ({ series: k, text: `${NAME[k]}: ${fmt(series[k][i])} of citations` })));
+  });
+  hit.addEventListener("pointerleave", () => { hideTip(); cross.setAttribute("visibility", "hidden"); dots.forEach(d => d.setAttribute("visibility", "hidden")); });
+  container.replaceChildren(svg);
+}
+
+// Round an axis maximum up to a clean step so ticks read 0, 10, 20, ... rather than 0, 10.3, ...
+function niceMax(v, n = 4) {
+  const raw = v / n, mag = 10 ** Math.floor(Math.log10(raw)), f = raw / mag;
+  const step = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * mag;
+  return step * n;
+}
+
+function parseCSV(txt) {
+  const [head, ...rows] = txt.trim().split("\n");
+  const keys = head.split(",");
+  return rows.map(line => {
+    const vals = line.split(","), o = {};
+    keys.forEach((k, i) => o[k] = vals[i] === "" || vals[i] === undefined ? null : (isNaN(+vals[i]) ? vals[i] : +vals[i]));
+    return o;
+  });
+}
+
+function repoInfo() {
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/);
+  const repo = location.pathname.split("/").filter(Boolean)[0];
+  return m && repo ? { owner: m[1], repo } : null;
+}
+
+async function main() {
+  let S, P;
+  try {
+    [S, P] = await Promise.all([fetch("data/summary.json").then(r => r.json()),
+                                fetch("data/paper_metrics.csv").then(r => r.text()).then(parseCSV)]);
+  } catch (e) {
+    $("#status").textContent = "Could not load data. If you opened this file directly, serve the docs/ folder (python3 -m http.server).";
+    return;
+  }
+  const M = Object.fromEntries(S.metrics.map(m => [m.key, m]));
+  $("#n-ai").textContent = S.n_papers.ai_all;
+  $("#n-human").textContent = S.n_papers.human.toLocaleString();
+  $("#status").textContent = S.n_papers.human
+    ? `Preliminary: ${S.n_papers.ai_matched} subject-labelled AI preprints vs ${S.n_papers.human} human papers`
+    : "Human comparison sample not yet available";
+
+  // Headline tiles
+  const tile = (key, label, fmt) => {
+    const m = M[key]; if (!m || !m.human) return "";
+    const [lo, hi] = m.diff_ci95, sc = m.kind === "share" ? 100 : 1, u = m.kind === "share" ? " pp" : "";
+    return `<div class="tile"><div class="label">${label}</div><div class="pair">
+      <div><div class="v">${fmt(m.ai.mean)}</div><div class="who"><i class="swatch sw-ai"></i>AI</div></div>
+      <div><div class="v">${fmt(m.human.mean)}</div><div class="who"><i class="swatch sw-human"></i>Human</div></div></div>
+      <div class="delta">Δ ${(sc * m.diff_mean).toFixed(1)}${u} (95% CI ${(sc * lo).toFixed(1)} to ${(sc * hi).toFixed(1)})</div></div>`;
+  };
+  $("#tiles").innerHTML =
+    tile("share_pinpoint_specific", "Citations that name a specific theorem, section or page", v => pct(v, 0)) +
+    tile("share_in_proof", "Citations made inside proofs", v => pct(v, 0)) +
+    tile("share_group_3plus", "Citations that bundle three or more works", v => pct(v, 1)) +
+    tile("n_references", "References per paper", v => num(v, 0));
+
+  // Metric dumbbell
+  const shareKeys = ["share_pinpoint_specific", "share_pinpoint_result", "share_pinpoint_any", "share_in_proof",
+    "share_intro_or_front", "share_first_quarter", "share_group_3plus", "share_refs_cited_once",
+    "max_share_one_reference", "share_refs_recent_3y", "share_refs_classic_30y"];
+  const items = shareKeys.filter(k => M[k] && M[k].human).map(k => {
+    const m = M[k], [lo, hi] = m.diff_ci95;
+    return { label: m.label, ai: m.ai.mean, human: m.human.mean,
+      extra: `Difference ${(100 * m.diff_mean).toFixed(1)} pp (95% CI ${(100 * lo).toFixed(1)} to ${(100 * hi).toFixed(1)})` };
+  });
+  const drawMetrics = () => dumbbell($("#chart-metrics"), items, { labelW: 330 });
+  table($("#table-metrics"), ["Measure", "AI", "Human", "Difference (95% CI)"],
+    S.metrics.filter(m => m.human).map(m => {
+      const f = m.kind === "share" ? (v) => pct(v) : (v) => num(v, 2), sc = m.kind === "share" ? 100 : 1, u = m.kind === "share" ? " pp" : "";
+      return [m.label, f(m.ai.mean), f(m.human.mean), `${(sc * m.diff_mean).toFixed(1)}${u} (${(sc * m.diff_ci95[0]).toFixed(1)}, ${(sc * m.diff_ci95[1]).toFixed(1)})`];
+    }), [1, 2, 3]);
+
+  // Paper-level pinpoint histogram
+  const bins = ["0%", "1–20%", "20–40%", "40–60%", "60–80%", "80–100%"];
+  const binLabels = ["0%", "1–\n20%", "20–\n40%", "40–\n60%", "60–\n80%", "80–\n100%"];
+  const binOf = (v) => v === 0 ? 0 : Math.min(5, 1 + Math.floor(v * 5 - 1e-9));
+  const hist = { ai: Array(6).fill(0), human: Array(6).fill(0) };
+  const groups = { ai: P.filter(p => p.corpus === "ai" && p.subject && p.share_pinpoint_specific != null),
+                   human: P.filter(p => p.corpus === "human" && p.share_pinpoint_specific != null) };
+  for (const k of ["ai", "human"]) groups[k].forEach(p => hist[k][binOf(p.share_pinpoint_specific)]++);
+  const pinCats = bins.map((b, i) => ({ label: binLabels[i], ai: hist.ai[i] / groups.ai.length, human: hist.human[i] / (groups.human.length || 1) }));
+  const drawPinHist = () => groupedBars($("#chart-pinhist"), pinCats, { title: "Papers, by share of their citations pinpointed" });
+  table($("#table-pinhist"), ["Citations pinpointed", "AI papers", "Human papers"], pinCats.map((c, i) => [bins[i], pct(c.ai), pct(c.human)]), [1, 2]);
+
+  // Pinpoint mix
+  const mixOrder = [["result", "Theorem,\nlemma, …"], ["location", "Section,\nchapter"], ["page", "Page"], ["numbered", "Bare\nnumber"], ["other", "Other\nnote"], ["none", "No\npinpoint"]];
+  const tot = (k) => Object.values(S.pinpoint_mix[k]).reduce((a, b) => a + b, 0) || 1;
+  const mixCats = mixOrder.map(([k, l]) => ({ label: l, ai: (S.pinpoint_mix.ai[k] || 0) / tot("ai"), human: (S.pinpoint_mix.human[k] || 0) / tot("human") }));
+  const drawPinMix = () => groupedBars($("#chart-pinmix"), mixCats, { title: "What citations point to (all citations)" });
+  table($("#table-pinmix"), ["Pinpoint type", "AI", "Human"], mixCats.map(c => [c.label.replace("\n", " "), pct(c.ai), pct(c.human)]), [1, 2]);
+
+  // By subject
+  const measures = [
+    ["share_pinpoint_specific", "Pinpointed citations", pct, 0, 1],
+    ["share_in_proof", "Citations in proofs", pct, 0, 0.5],
+    ["share_intro_or_front", "Citations in the introduction", pct, 0, 1],
+    ["median_reference_age", "Median age of cited works (years)", (v) => num(v, 0), 0, 30],
+    ["n_references", "References per paper", (v) => num(v, 0), 0, 50]];
+  let current = 0;
+  const subjects = S.by_subject.filter(b => b.n_ai >= 10 && b.n_human >= 10);
+  const ctr = $("#subject-controls");
+  measures.forEach(([k, l], i) => {
+    const b = document.createElement("button"); b.textContent = l; b.setAttribute("aria-pressed", i === 0);
+    b.onclick = () => { current = i; [...ctr.children].forEach((c, j) => c.setAttribute("aria-pressed", j === i)); drawSubject(); };
+    ctr.appendChild(b);
+  });
+  function drawSubject() {
+    const [k, , fmt, min, max] = measures[current];
+    const its = subjects.map(b => ({ label: `${b.subject} (${b.n_ai} / ${b.n_human})`, ai: b[k + "_ai"], human: b[k + "_human"] }))
+      .sort((a, b) => (b.ai - b.human) - (a.ai - a.human));
+    const ticks = [0, 0.25, 0.5, 0.75, 1].map(t => min + t * (max - min));
+    dumbbell($("#chart-subject"), its, { min, max, fmt, ticks, labelW: 190, rowH: 28 });
+    table($("#table-subject"), ["Subject (AI / human papers)", "AI", "Human"], its.map(i => [i.label, fmt(i.ai), fmt(i.human)]), [1, 2]);
+  }
+
+  // Position
+  const pos = {};
+  for (const k of ["ai", "human"]) { const t = S.position_hist[k].reduce((a, b) => a + b, 0) || 1; pos[k] = S.position_hist[k].map(v => v / t); }
+  const xs = Array.from({ length: 20 }, (_, i) => `${i * 5}%`);
+  const drawPos = () => lines($("#chart-position"), xs, pos, { title: "Where in the text citations fall" });
+  table($("#table-position"), ["Position", "AI", "Human"], xs.map((x, i) => [`${x}–${(i + 1) * 5}%`, pct(pos.ai[i]), pct(pos.human[i])]), [1, 2]);
+
+  // Age
+  const bands = [[0, 3, "0–3"], [4, 10, "4–10"], [11, 20, "11–20"], [21, 30, "21–30"], [31, 50, "31–50"], [51, 1000, "51+"]];
+  const ageShare = (k) => { const h = S.reference_age_hist[k], t = h.reduce((a, [, c]) => a + c, 0) || 1;
+    return bands.map(([lo, hi]) => h.filter(([a]) => a >= lo && a <= hi).reduce((s, [, c]) => s + c, 0) / t); };
+  const ageAI = ageShare("ai"), ageH = ageShare("human");
+  const ageCats = bands.map((b, i) => ({ label: b[2] + "\nyears", ai: ageAI[i], human: ageH[i] }));
+  const drawAge = () => groupedBars($("#chart-age"), ageCats, { title: "Age of cited works (share of references)" });
+  table($("#table-age"), ["Age (years)", "AI", "Human"], ageCats.map(c => [c.label.replace("\n", " "), pct(c.ai), pct(c.human)]), [1, 2]);
+
+  // AI-only tiles
+  const ic = S.ai_internal_citations, dc = S.ai_doi_check || {}, dtot = Object.values(dc).reduce((a, b) => a + b, 0) || 1;
+  const one = (v, label, sub) => `<div class="tile"><div class="label">${label}</div><div class="v" style="margin-top:6px">${v}</div><div class="delta">${sub}</div></div>`;
+  $("#ai-tiles").innerHTML =
+    one(`${ic.citing_papers} of ${S.n_papers.ai_all}`, "AI preprints that cite another OpenAI preprint", `${ic.references} such references in all`) +
+    one(ic.cites_later_release, "Citations to a preprint released later than the citing one", "1–12 days later, by folder release date") +
+    one(pct((dc.title_match || 0) / dtot), "Cited DOIs whose registered title matches", `${dtot.toLocaleString()} references with a DOI`) +
+    one((dc.not_found || 0), "Cited DOIs not registered anywhere", "Crossref, DataCite and doi.org checked");
+
+  // Data links
+  const info = repoInfo();
+  const files = [["openai_math_citations.csv", "References in the OpenAI preprints"], ["human_arxiv_citations.csv", "References in the human sample"],
+    ["ai_intext_citations.csv", "Every in-text citation (AI)"], ["human_intext_citations.csv", "Every in-text citation (human)"],
+    ["analysis/paper_metrics.csv", "Per-paper metrics"], ["doi_check_ai.csv", "DOI check (AI)"], ["ai_cross_citations.csv", "Citations among OpenAI preprints"]];
+  if (info) {
+    const raw = (f) => `https://raw.githubusercontent.com/${info.owner}/${info.repo}/main/data/${f}`;
+    const blob = (f) => `https://github.com/${info.owner}/${info.repo}/blob/main/data/${f}`;
+    $("#data-links").innerHTML = "<tr><th>Table</th><th>Explore</th><th>Download</th></tr>" + files.map(([f, d]) =>
+      `<tr><td>${d}</td><td><a href="https://lite.datasette.io/?csv=${encodeURIComponent(raw(f))}">Open in Datasette Lite</a></td><td><a href="${blob(f)}">${f}</a></td></tr>`).join("");
+    $("#repo-link").href = `https://github.com/${info.owner}/${info.repo}`;
+  } else {
+    $("#data-links").innerHTML = "<tr><td>Links to the data appear when this page is served from GitHub Pages. Locally, the CSVs are in the repository's data/ folder.</td></tr>";
+  }
+
+  const drawAll = () => { drawMetrics(); drawPinHist(); drawPinMix(); drawSubject(); drawPos(); drawAge(); };
+  drawAll();
+  let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawAll, 120); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+}
+main();
+</script>
+</body>
+</html>
