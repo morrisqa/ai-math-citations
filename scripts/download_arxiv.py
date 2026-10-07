@@ -76,28 +76,32 @@ def main():
         w = csv.DictWriter(fh, fieldnames=fields)
         if new_log:
             w.writeheader()
-        for stratum, rows in sorted(by_stratum.items(), key=lambda kv: -int(kv[1][0]["n_ai_in_stratum"])):
-            target = RATIO * int(rows[0]["n_ai_in_stratum"])
-            rows.sort(key=lambda r: int(r["rank"]))
-            have = sum(1 for r in rows if done.get(r["id"], {}).get("status") == "included")
-            for r in rows:
-                if have >= target:
-                    break
-                if r["id"] in done:
-                    continue
-                try:
-                    status = fetch(r["id"])
-                except RuntimeError:
-                    status = "download_failed"
-                n = 0
-                if status == "ok":
-                    n = len(references_for_source(os.path.join(SOURCES, safe(r["id"]))))
-                    status = "included" if n else "no_bibliography"
-                    have += status == "included"
-                w.writerow({"stratum": stratum, "rank": r["rank"], "id": r["id"], "status": status, "n_references": n})
-                fh.flush()
-                done[r["id"]] = {"status": status}
-            print(f"{stratum}: {have}/{target}")
+        # Two passes: first reach 1 paper per AI preprint in every stratum, then RATIO.
+        # If collection stops early, the sample is still balanced across strata.
+        for ratio in range(1, RATIO + 1):
+            for stratum, rows in sorted(by_stratum.items(), key=lambda kv: -int(kv[1][0]["n_ai_in_stratum"])):
+                target = ratio * int(rows[0]["n_ai_in_stratum"])
+                rows.sort(key=lambda r: int(r["rank"]))
+                have = sum(1 for r in rows if done.get(r["id"], {}).get("status") == "included")
+                for r in rows:
+                    if have >= target:
+                        break
+                    if r["id"] in done:
+                        continue
+                    try:
+                        status = fetch(r["id"])
+                    except RuntimeError:
+                        status = "download_failed"
+                    n = 0
+                    if status == "ok":
+                        n = len(references_for_source(os.path.join(SOURCES, safe(r["id"]))))
+                        status = "included" if n else "no_bibliography"
+                        have += status == "included"
+                    w.writerow({"stratum": stratum, "rank": r["rank"], "id": r["id"], "status": status,
+                                "n_references": n})
+                    fh.flush()
+                    done[r["id"]] = {"status": status}
+                print(f"pass {ratio} {stratum}: {have}/{target}", flush=True)
 
 
 if __name__ == "__main__":

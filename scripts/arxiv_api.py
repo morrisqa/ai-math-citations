@@ -1,18 +1,19 @@
 """Minimal, rate-limited client for the arXiv API (https://info.arxiv.org/help/api/)."""
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
 API = "https://export.arxiv.org/api/query"
 USER_AGENT = "openai-math-citation-study/0.1 (academic research)"
-DELAY = 3.0  # arXiv asks for no more than one request every three seconds
+DELAY = 5.0  # arXiv asks for at most one request every 3 s; we stay well under that
 NS = {"a": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom",
       "os": "http://a9.com/-/spec/opensearch/1.1/"}
 _last = 0.0
 
 
-def get(url, retries=6):
+def get(url, retries=12):
     global _last
     for attempt in range(retries):
         wait = _last + DELAY - time.time()
@@ -23,9 +24,17 @@ def get(url, retries=6):
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=120) as r:
                 return r.read()
-        except Exception as e:  # network hiccups, 429s and 503s: back off and retry
-            print(f"  retry {attempt + 1} for {url[:100]}: {e}")
-            time.sleep(60 * (attempt + 1))
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                raise RuntimeError(f"not found: {url}")
+            # 429/503: honour Retry-After if given, else back off (capped at 10 minutes).
+            retry_after = e.headers.get("Retry-After", "")
+            pause = int(retry_after) if retry_after.isdigit() else min(60 * 2 ** attempt, 600)
+            print(f"  HTTP {e.code}; waiting {pause}s (attempt {attempt + 1}) for {url[:90]}", flush=True)
+            time.sleep(pause)
+        except Exception as e:  # timeouts, truncated reads
+            print(f"  retry {attempt + 1} for {url[:90]}: {e}", flush=True)
+            time.sleep(30 * (attempt + 1))
     raise RuntimeError(f"giving up on {url}")
 
 

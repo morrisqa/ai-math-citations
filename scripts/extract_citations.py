@@ -34,10 +34,16 @@ SYMBOLS = {r"\o": "ø", r"\O": "Ø", r"\l": "ł", r"\L": "Ł", r"\ss": "ß", r"\
            r"\AA": "Å", r"\i": "ı", r"\&": "&", r"\_": "_", r"\%": "%"}
 
 
-def clean(s):
-    """Light LaTeX -> plain text: accents, braces, ties, whitespace. Math is left as-is."""
+HREF = re.compile(r"\\href\s*\{((?:[^{}]|\{[^{}]*\})*)\}\s*\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}")
+
+
+def clean(s, keep_urls=False):
+    """Light LaTeX -> plain text: accents, braces, ties, whitespace. Math is left as-is.
+    \\href{url}{text} becomes text, or "text <url>" when keep_urls is set."""
     if not s:
         return ""
+    s = HREF.sub(lambda m: f"{m.group(2)} <{m.group(1)}>" if keep_urls and m.group(1) not in m.group(2)
+                 else m.group(2), s)
     for cmd, table in ACCENTS.items():
         esc = re.escape(cmd)
         s = re.sub(r"\\" + esc + r"\s*\{\s*\\?([A-Za-z])\s*\}", lambda m: table.get(m.group(1), m.group(1)), s)
@@ -288,7 +294,7 @@ def bibitem_row(key, raw):
             "journal_or_venue": clean(f.get("venue", "")), "booktitle": "", "publisher": "",
             "volume": clean(f.get("volume", "")), "number": "", "pages": f.get("pages", ""),
             "doi": doi, "arxiv_id": arxiv, "url": f.get("url", ""), "note": "",
-            "normalized_id": norm_id(doi, arxiv, f.get("title", "")), "raw_reference": clean(raw)}
+            "normalized_id": norm_id(doi, arxiv, f.get("title", "")), "raw_reference": clean(raw, keep_urls=True)}
 
 
 COLUMNS = ["preprint_folder", "preprint_title", "preprint_date", "source_format", "source_file",
