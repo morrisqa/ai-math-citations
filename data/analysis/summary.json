@@ -1,0 +1,1919 @@
+{
+ "n_papers": {
+  "ai_all": 722,
+  "ai_matched": 687,
+  "human": 684
+ },
+ "metrics": [
+  {
+   "key": "n_references",
+   "label": "References per paper",
+   "kind": "count",
+   "ai_all": {
+    "n": 722,
+    "mean": 23.97645429362881,
+    "median": 21.0
+   },
+   "ai": {
+    "n": 687,
+    "mean": 24.426491994177585,
+    "median": 22
+   },
+   "human": {
+    "n": 684,
+    "mean": 29.440058479532162,
+    "median": 25.0
+   },
+   "diff_mean": -5.013566485354577,
+   "diff_ci95": [
+    -6.663276641385121,
+    -3.2834278199136833
+   ]
+  },
+  {
+   "key": "n_cite_commands",
+   "label": "Citation commands per paper",
+   "kind": "count",
+   "ai_all": {
+    "n": 722,
+    "mean": 42.70360110803324,
+    "median": 35.0
+   },
+   "ai": {
+    "n": 687,
+    "mean": 43.63173216885007,
+    "median": 36
+   },
+   "human": {
+    "n": 684,
+    "mean": 47.98099415204678,
+    "median": 39.0
+   },
+   "diff_mean": -4.349261983196712,
+   "diff_ci95": [
+    -7.584750632038613,
+    -1.0741655813478346
+   ]
+  },
+  {
+   "key": "citations_per_reference",
+   "label": "In-text citations per reference",
+   "kind": "ratio",
+   "ai_all": {
+    "n": 722,
+    "mean": 1.8939219382292936,
+    "median": 1.7350877192982457
+   },
+   "ai": {
+    "n": 687,
+    "mean": 1.9034647973326078,
+    "median": 1.7407407407407407
+   },
+   "human": {
+    "n": 684,
+    "mean": 2.174040239825986,
+    "median": 1.8075396825396826
+   },
+   "diff_mean": -0.27057544249337817,
+   "diff_ci95": [
+    -0.5555385649567868,
+    -0.07554449003010877
+   ]
+  },
+  {
+   "key": "share_pinpoint_specific",
+   "label": "Citations naming a specific result, section or page",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.6333678023015366,
+    "median": 0.6608823529411765
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.6380742648164464,
+    "median": 0.6666666666666666
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.23100079878607646,
+    "median": 0.14473684210526316
+   },
+   "diff_mean": 0.40707346603036987,
+   "diff_ci95": [
+    0.38380679396745676,
+    0.43028538263963345
+   ]
+  },
+  {
+   "key": "share_pinpoint_result",
+   "label": "Citations naming a specific result (Theorem, Lemma, ...)",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.47706242588235365,
+    "median": 0.4861111111111111
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.48385387082434894,
+    "median": 0.5
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.16717769328192036,
+    "median": 0.09090909090909091
+   },
+   "diff_mean": 0.3166761775424286,
+   "diff_ci95": [
+    0.29559114547157084,
+    0.336720182896252
+   ]
+  },
+  {
+   "key": "share_pinpoint_any",
+   "label": "Citations with any pinpoint (including in prose)",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.6409701085787268,
+    "median": 0.6666666666666666
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.6457345304727327,
+    "median": 0.6704545454545454
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.2761830203713382,
+    "median": 0.2222222222222222
+   },
+   "diff_mean": 0.3695515101013945,
+   "diff_ci95": [
+    0.34585792849498215,
+    0.3928144179210697
+   ]
+  },
+  {
+   "key": "share_in_proof",
+   "label": "Citations inside proofs",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.19937274723657591,
+    "median": 0.15789473684210525
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.20355442300435345,
+    "median": 0.16
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.10655877901797267,
+    "median": 0.05970149253731343
+   },
+   "diff_mean": 0.09699564398638078,
+   "diff_ci95": [
+    0.0813840385975449,
+    0.11288453882047102
+   ]
+  },
+  {
+   "key": "share_intro_or_front",
+   "label": "Citations in abstract or introduction",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.47522437540422474,
+    "median": 0.5
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.47234306408010185,
+    "median": 0.5
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.4407113518595539,
+    "median": 0.41818181818181815
+   },
+   "diff_mean": 0.03163171222054795,
+   "diff_ci95": [
+    0.008254235511532593,
+    0.05443135641549901
+   ]
+  },
+  {
+   "key": "share_first_quarter",
+   "label": "Citations in the first quarter of the text",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.6425819260082867,
+    "median": 0.6666666666666666
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.6381320973676059,
+    "median": 0.65625
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.5085385711889857,
+    "median": 0.49019607843137253
+   },
+   "diff_mean": 0.1295935261786202,
+   "diff_ci95": [
+    0.1106437795604841,
+    0.14861306904602767
+   ]
+  },
+  {
+   "key": "mean_group_size",
+   "label": "Works per citation command",
+   "kind": "ratio",
+   "ai_all": {
+    "n": 722,
+    "mean": 1.0734918116014474,
+    "median": 1.0526315789473684
+   },
+   "ai": {
+    "n": 687,
+    "mean": 1.0730020000636205,
+    "median": 1.0526315789473684
+   },
+   "human": {
+    "n": 677,
+    "mean": 1.236228426077356,
+    "median": 1.0975609756097562
+   },
+   "diff_mean": -0.1632264260137355,
+   "diff_ci95": [
+    -0.19521669739869063,
+    -0.13389072224289955
+   ]
+  },
+  {
+   "key": "share_group_3plus",
+   "label": "Citation commands bundling 3+ works",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.010135084113451999,
+    "median": 0.0
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.010094310550203395,
+    "median": 0.0
+   },
+   "human": {
+    "n": 677,
+    "mean": 0.04843555919406805,
+    "median": 0.016304347826086956
+   },
+   "diff_mean": -0.03834124864386465,
+   "diff_ci95": [
+    -0.04423174849805174,
+    -0.03266538957313908
+   ]
+  },
+  {
+   "key": "share_refs_cited_once",
+   "label": "References cited only once",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.6126646487249894,
+    "median": 0.6120071684587813
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.6124856283528906,
+    "median": 0.6111111111111112
+   },
+   "human": {
+    "n": 676,
+    "mean": 0.6220832549236861,
+    "median": 0.625
+   },
+   "diff_mean": -0.009597626570795548,
+   "diff_ci95": [
+    -0.026561232289975867,
+    0.008120107014848332
+   ]
+  },
+  {
+   "key": "max_share_one_reference",
+   "label": "Share of citations going to the most-used reference",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.18067536429684608,
+    "median": 0.14854215918045705
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.17970969214396848,
+    "median": 0.14736842105263157
+   },
+   "human": {
+    "n": 676,
+    "mean": 0.20270143493599616,
+    "median": 0.16666666666666666
+   },
+   "diff_mean": -0.022991742792027675,
+   "diff_ci95": [
+    -0.036181747027252825,
+    -0.010831783125508948
+   ]
+  },
+  {
+   "key": "median_reference_age",
+   "label": "Median age of cited works (years)",
+   "kind": "years",
+   "ai_all": {
+    "n": 722,
+    "mean": 19.599722991689752,
+    "median": 18.0
+   },
+   "ai": {
+    "n": 687,
+    "mean": 19.151382823871906,
+    "median": 18
+   },
+   "human": {
+    "n": 681,
+    "mean": 16.538179148311308,
+    "median": 15
+   },
+   "diff_mean": 2.613203675560598,
+   "diff_ci95": [
+    1.6119692976550013,
+    3.6216391256115763
+   ]
+  },
+  {
+   "key": "share_refs_recent_3y",
+   "label": "Cited works at most 3 years old",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.18447807555375906,
+    "median": 0.1759545923632611
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.18668675883009342,
+    "median": 0.17647058823529413
+   },
+   "human": {
+    "n": 681,
+    "mean": 0.19267597304904963,
+    "median": 0.16
+   },
+   "diff_mean": -0.005989214218956207,
+   "diff_ci95": [
+    -0.019853016205466617,
+    0.007643273202252332
+   ]
+  },
+  {
+   "key": "share_refs_classic_30y",
+   "label": "Cited works at least 30 years old",
+   "kind": "share",
+   "ai_all": {
+    "n": 722,
+    "mean": 0.3138659322794886,
+    "median": 0.30434782608695654
+   },
+   "ai": {
+    "n": 687,
+    "mean": 0.30742104188680086,
+    "median": 0.3
+   },
+   "human": {
+    "n": 681,
+    "mean": 0.2619690370571957,
+    "median": 0.23809523809523808
+   },
+   "diff_mean": 0.04545200482960515,
+   "diff_ci95": [
+    0.027416598912833323,
+    0.06315705039606612
+   ]
+  }
+ ],
+ "reference_age_hist": {
+  "ai": [
+   [
+    0,
+    1607
+   ],
+   [
+    1,
+    622
+   ],
+   [
+    2,
+    423
+   ],
+   [
+    3,
+    381
+   ],
+   [
+    4,
+    340
+   ],
+   [
+    5,
+    398
+   ],
+   [
+    6,
+    344
+   ],
+   [
+    7,
+    374
+   ],
+   [
+    8,
+    354
+   ],
+   [
+    9,
+    440
+   ],
+   [
+    10,
+    404
+   ],
+   [
+    11,
+    384
+   ],
+   [
+    12,
+    408
+   ],
+   [
+    13,
+    413
+   ],
+   [
+    14,
+    364
+   ],
+   [
+    15,
+    308
+   ],
+   [
+    16,
+    360
+   ],
+   [
+    17,
+    384
+   ],
+   [
+    18,
+    308
+   ],
+   [
+    19,
+    261
+   ],
+   [
+    20,
+    283
+   ],
+   [
+    21,
+    273
+   ],
+   [
+    22,
+    308
+   ],
+   [
+    23,
+    247
+   ],
+   [
+    24,
+    284
+   ],
+   [
+    25,
+    278
+   ],
+   [
+    26,
+    278
+   ],
+   [
+    27,
+    279
+   ],
+   [
+    28,
+    278
+   ],
+   [
+    29,
+    137
+   ],
+   [
+    30,
+    164
+   ],
+   [
+    31,
+    185
+   ],
+   [
+    32,
+    150
+   ],
+   [
+    33,
+    120
+   ],
+   [
+    34,
+    156
+   ],
+   [
+    35,
+    123
+   ],
+   [
+    36,
+    163
+   ],
+   [
+    37,
+    117
+   ],
+   [
+    38,
+    135
+   ],
+   [
+    39,
+    158
+   ],
+   [
+    40,
+    121
+   ],
+   [
+    41,
+    116
+   ],
+   [
+    42,
+    96
+   ],
+   [
+    43,
+    137
+   ],
+   [
+    44,
+    167
+   ],
+   [
+    45,
+    150
+   ],
+   [
+    46,
+    121
+   ],
+   [
+    47,
+    123
+   ],
+   [
+    48,
+    134
+   ],
+   [
+    49,
+    136
+   ],
+   [
+    50,
+    114
+   ],
+   [
+    51,
+    127
+   ],
+   [
+    52,
+    101
+   ],
+   [
+    53,
+    189
+   ],
+   [
+    54,
+    114
+   ],
+   [
+    55,
+    129
+   ],
+   [
+    56,
+    87
+   ],
+   [
+    57,
+    77
+   ],
+   [
+    58,
+    98
+   ],
+   [
+    59,
+    84
+   ],
+   [
+    60,
+    73
+   ],
+   [
+    61,
+    104
+   ],
+   [
+    62,
+    57
+   ],
+   [
+    63,
+    85
+   ],
+   [
+    64,
+    53
+   ],
+   [
+    65,
+    56
+   ],
+   [
+    66,
+    65
+   ],
+   [
+    67,
+    59
+   ],
+   [
+    68,
+    44
+   ],
+   [
+    69,
+    62
+   ],
+   [
+    70,
+    72
+   ],
+   [
+    71,
+    26
+   ],
+   [
+    72,
+    32
+   ],
+   [
+    73,
+    30
+   ],
+   [
+    74,
+    38
+   ],
+   [
+    75,
+    25
+   ],
+   [
+    76,
+    18
+   ],
+   [
+    77,
+    17
+   ],
+   [
+    78,
+    14
+   ],
+   [
+    79,
+    11
+   ],
+   [
+    80,
+    13
+   ],
+   [
+    81,
+    3
+   ],
+   [
+    82,
+    5
+   ],
+   [
+    83,
+    8
+   ],
+   [
+    84,
+    19
+   ],
+   [
+    85,
+    13
+   ],
+   [
+    86,
+    10
+   ],
+   [
+    87,
+    10
+   ],
+   [
+    88,
+    10
+   ],
+   [
+    89,
+    7
+   ],
+   [
+    90,
+    12
+   ],
+   [
+    91,
+    37
+   ],
+   [
+    92,
+    19
+   ],
+   [
+    93,
+    5
+   ],
+   [
+    94,
+    15
+   ],
+   [
+    95,
+    8
+   ],
+   [
+    96,
+    22
+   ],
+   [
+    97,
+    6
+   ],
+   [
+    98,
+    8
+   ],
+   [
+    99,
+    11
+   ],
+   [
+    100,
+    114
+   ]
+  ],
+  "human": [
+   [
+    0,
+    678
+   ],
+   [
+    1,
+    1166
+   ],
+   [
+    2,
+    969
+   ],
+   [
+    3,
+    868
+   ],
+   [
+    4,
+    747
+   ],
+   [
+    5,
+    698
+   ],
+   [
+    6,
+    618
+   ],
+   [
+    7,
+    591
+   ],
+   [
+    8,
+    572
+   ],
+   [
+    9,
+    544
+   ],
+   [
+    10,
+    532
+   ],
+   [
+    11,
+    455
+   ],
+   [
+    12,
+    441
+   ],
+   [
+    13,
+    442
+   ],
+   [
+    14,
+    426
+   ],
+   [
+    15,
+    375
+   ],
+   [
+    16,
+    378
+   ],
+   [
+    17,
+    345
+   ],
+   [
+    18,
+    376
+   ],
+   [
+    19,
+    338
+   ],
+   [
+    20,
+    313
+   ],
+   [
+    21,
+    296
+   ],
+   [
+    22,
+    288
+   ],
+   [
+    23,
+    274
+   ],
+   [
+    24,
+    275
+   ],
+   [
+    25,
+    255
+   ],
+   [
+    26,
+    231
+   ],
+   [
+    27,
+    232
+   ],
+   [
+    28,
+    228
+   ],
+   [
+    29,
+    197
+   ],
+   [
+    30,
+    211
+   ],
+   [
+    31,
+    175
+   ],
+   [
+    32,
+    188
+   ],
+   [
+    33,
+    148
+   ],
+   [
+    34,
+    184
+   ],
+   [
+    35,
+    181
+   ],
+   [
+    36,
+    127
+   ],
+   [
+    37,
+    150
+   ],
+   [
+    38,
+    141
+   ],
+   [
+    39,
+    155
+   ],
+   [
+    40,
+    125
+   ],
+   [
+    41,
+    141
+   ],
+   [
+    42,
+    141
+   ],
+   [
+    43,
+    119
+   ],
+   [
+    44,
+    136
+   ],
+   [
+    45,
+    139
+   ],
+   [
+    46,
+    115
+   ],
+   [
+    47,
+    97
+   ],
+   [
+    48,
+    100
+   ],
+   [
+    49,
+    110
+   ],
+   [
+    50,
+    96
+   ],
+   [
+    51,
+    92
+   ],
+   [
+    52,
+    85
+   ],
+   [
+    53,
+    89
+   ],
+   [
+    54,
+    80
+   ],
+   [
+    55,
+    73
+   ],
+   [
+    56,
+    54
+   ],
+   [
+    57,
+    66
+   ],
+   [
+    58,
+    50
+   ],
+   [
+    59,
+    42
+   ],
+   [
+    60,
+    38
+   ],
+   [
+    61,
+    44
+   ],
+   [
+    62,
+    39
+   ],
+   [
+    63,
+    37
+   ],
+   [
+    64,
+    31
+   ],
+   [
+    65,
+    30
+   ],
+   [
+    66,
+    23
+   ],
+   [
+    67,
+    39
+   ],
+   [
+    68,
+    28
+   ],
+   [
+    69,
+    24
+   ],
+   [
+    70,
+    24
+   ],
+   [
+    71,
+    17
+   ],
+   [
+    72,
+    14
+   ],
+   [
+    73,
+    6
+   ],
+   [
+    74,
+    8
+   ],
+   [
+    75,
+    7
+   ],
+   [
+    76,
+    9
+   ],
+   [
+    77,
+    7
+   ],
+   [
+    78,
+    6
+   ],
+   [
+    79,
+    9
+   ],
+   [
+    80,
+    9
+   ],
+   [
+    81,
+    12
+   ],
+   [
+    82,
+    6
+   ],
+   [
+    83,
+    3
+   ],
+   [
+    84,
+    8
+   ],
+   [
+    85,
+    4
+   ],
+   [
+    86,
+    12
+   ],
+   [
+    87,
+    4
+   ],
+   [
+    88,
+    8
+   ],
+   [
+    89,
+    10
+   ],
+   [
+    90,
+    5
+   ],
+   [
+    91,
+    7
+   ],
+   [
+    92,
+    6
+   ],
+   [
+    93,
+    3
+   ],
+   [
+    94,
+    3
+   ],
+   [
+    95,
+    1
+   ],
+   [
+    96,
+    4
+   ],
+   [
+    97,
+    7
+   ],
+   [
+    98,
+    4
+   ],
+   [
+    99,
+    3
+   ],
+   [
+    100,
+    446
+   ]
+  ]
+ },
+ "pinpoint_mix": {
+  "ai": {
+   "none": 9870,
+   "location": 4109,
+   "result": 15502,
+   "page": 306,
+   "other": 144,
+   "numbered": 44
+  },
+  "human": {
+   "none": 22678,
+   "location": 1792,
+   "result": 7148,
+   "other": 281,
+   "page": 550,
+   "numbered": 370
+  }
+ },
+ "position_hist": {
+  "ai": [
+   8188,
+   4313,
+   2316,
+   1412,
+   1132,
+   1010,
+   866,
+   846,
+   770,
+   728,
+   766,
+   731,
+   747,
+   685,
+   805,
+   756,
+   784,
+   789,
+   978,
+   1353
+  ],
+  "human": [
+   3959,
+   4073,
+   3071,
+   2281,
+   1962,
+   1699,
+   1520,
+   1254,
+   1111,
+   1177,
+   1056,
+   1029,
+   974,
+   935,
+   1098,
+   974,
+   1057,
+   1052,
+   1125,
+   1412
+  ]
+ },
+ "by_subject": [
+  {
+   "subject": "math.AG",
+   "n_ai": 101,
+   "n_human": 101,
+   "share_pinpoint_specific_ai": 0.7455204673756576,
+   "share_pinpoint_specific_human": 0.459403917186024,
+   "share_in_proof_ai": 0.36241607466086934,
+   "share_in_proof_human": 0.1813029546320646,
+   "share_intro_or_front_ai": 0.3466220343304259,
+   "share_intro_or_front_human": 0.3329700086156104,
+   "median_reference_age_ai": 17.821782178217823,
+   "median_reference_age_human": 17.173267326732674,
+   "n_references_ai": 32.08910891089109,
+   "n_references_human": 30.594059405940595
+  },
+  {
+   "subject": "math.PR",
+   "n_ai": 95,
+   "n_human": 95,
+   "share_pinpoint_specific_ai": 0.5666556873594595,
+   "share_pinpoint_specific_human": 0.20384843132809405,
+   "share_in_proof_ai": 0.18460211977517868,
+   "share_in_proof_human": 0.12370521179770454,
+   "share_intro_or_front_ai": 0.44574406191922317,
+   "share_intro_or_front_human": 0.4861285579393353,
+   "median_reference_age_ai": 17.53157894736842,
+   "median_reference_age_human": 15.058510638297872,
+   "n_references_ai": 23.45263157894737,
+   "n_references_human": 28.05263157894737
+  },
+  {
+   "subject": "math.CO",
+   "n_ai": 50,
+   "n_human": 50,
+   "share_pinpoint_specific_ai": 0.6022913080380704,
+   "share_pinpoint_specific_human": 0.15185365852319274,
+   "share_in_proof_ai": 0.10530213821954557,
+   "share_in_proof_human": 0.04720071621522285,
+   "share_intro_or_front_ai": 0.5743244497855622,
+   "share_intro_or_front_human": 0.5410950126536043,
+   "median_reference_age_ai": 17.48,
+   "median_reference_age_human": 15.63,
+   "n_references_ai": 21.46,
+   "n_references_human": 20.2
+  },
+  {
+   "subject": "math.DG",
+   "n_ai": 43,
+   "n_human": 43,
+   "share_pinpoint_specific_ai": 0.6249138200933038,
+   "share_pinpoint_specific_human": 0.17624922967975049,
+   "share_in_proof_ai": 0.2633205401369206,
+   "share_in_proof_human": 0.1335816786061797,
+   "share_intro_or_front_ai": 0.43808706334051656,
+   "share_intro_or_front_human": 0.4249498480927246,
+   "median_reference_age_ai": 21.372093023255815,
+   "median_reference_age_human": 15.732558139534884,
+   "n_references_ai": 25.953488372093023,
+   "n_references_human": 29.093023255813954
+  },
+  {
+   "subject": "math.NT",
+   "n_ai": 41,
+   "n_human": 41,
+   "share_pinpoint_specific_ai": 0.7019260236264463,
+   "share_pinpoint_specific_human": 0.3374701023719247,
+   "share_in_proof_ai": 0.24878210100807213,
+   "share_in_proof_human": 0.16107926428090275,
+   "share_intro_or_front_ai": 0.41584983165512285,
+   "share_intro_or_front_human": 0.4565880761542899,
+   "median_reference_age_ai": 21.890243902439025,
+   "median_reference_age_human": 19.609756097560975,
+   "n_references_ai": 32.46341463414634,
+   "n_references_human": 21.48780487804878
+  },
+  {
+   "subject": "math.AP",
+   "n_ai": 30,
+   "n_human": 30,
+   "share_pinpoint_specific_ai": 0.5884249161097592,
+   "share_pinpoint_specific_human": 0.14053407550671054,
+   "share_in_proof_ai": 0.16759465092171275,
+   "share_in_proof_human": 0.09019100527428824,
+   "share_intro_or_front_ai": 0.5016359498836138,
+   "share_intro_or_front_human": 0.503171460247107,
+   "median_reference_age_ai": 21.75,
+   "median_reference_age_human": 14.85,
+   "n_references_ai": 19.333333333333332,
+   "n_references_human": 37.5
+  },
+  {
+   "subject": "cs.DS",
+   "n_ai": 29,
+   "n_human": 29,
+   "share_pinpoint_specific_ai": 0.45334860985066106,
+   "share_pinpoint_specific_human": 0.03452753386812126,
+   "share_in_proof_ai": 0.06522529477718554,
+   "share_in_proof_human": 0.03687510059443163,
+   "share_intro_or_front_ai": 0.6206186212656749,
+   "share_intro_or_front_human": 0.5890745692417734,
+   "median_reference_age_ai": 16.689655172413794,
+   "median_reference_age_human": 12.448275862068966,
+   "n_references_ai": 20.275862068965516,
+   "n_references_human": 26.689655172413794
+  },
+  {
+   "subject": "math-ph",
+   "n_ai": 28,
+   "n_human": 28,
+   "share_pinpoint_specific_ai": 0.42859409848734425,
+   "share_pinpoint_specific_human": 0.10485195441729299,
+   "share_in_proof_ai": 0.14148728040203115,
+   "share_in_proof_human": 0.03867646897882624,
+   "share_intro_or_front_ai": 0.42370460034007745,
+   "share_intro_or_front_human": 0.3993490682657686,
+   "median_reference_age_ai": 20.892857142857142,
+   "median_reference_age_human": 15.214285714285714,
+   "n_references_ai": 23.607142857142858,
+   "n_references_human": 43.357142857142854
+  },
+  {
+   "subject": "math.GR",
+   "n_ai": 27,
+   "n_human": 27,
+   "share_pinpoint_specific_ai": 0.7167673517198425,
+   "share_pinpoint_specific_human": 0.320859734770023,
+   "share_in_proof_ai": 0.1865125086407772,
+   "share_in_proof_human": 0.12792045213199785,
+   "share_intro_or_front_ai": 0.4990985210986851,
+   "share_intro_or_front_human": 0.42187667762584674,
+   "median_reference_age_ai": 24.72222222222222,
+   "median_reference_age_human": 20.074074074074073,
+   "n_references_ai": 23.814814814814813,
+   "n_references_human": 23.51851851851852
+  },
+  {
+   "subject": "math.OA",
+   "n_ai": 26,
+   "n_human": 26,
+   "share_pinpoint_specific_ai": 0.6999444608203746,
+   "share_pinpoint_specific_human": 0.3235518349268264,
+   "share_in_proof_ai": 0.1893554167755232,
+   "share_in_proof_human": 0.1563763888033986,
+   "share_intro_or_front_ai": 0.48330093104798133,
+   "share_intro_or_front_human": 0.38496235119342714,
+   "median_reference_age_ai": 19.53846153846154,
+   "median_reference_age_human": 18.62,
+   "n_references_ai": 24.653846153846153,
+   "n_references_human": 27.5
+  },
+  {
+   "subject": "math.CA",
+   "n_ai": 25,
+   "n_human": 25,
+   "share_pinpoint_specific_ai": 0.6397387743702851,
+   "share_pinpoint_specific_human": 0.18864684613008867,
+   "share_in_proof_ai": 0.14251174740436248,
+   "share_in_proof_human": 0.08793704583993349,
+   "share_intro_or_front_ai": 0.5272902226294113,
+   "share_intro_or_front_human": 0.493138163503715,
+   "median_reference_age_ai": 15.38,
+   "median_reference_age_human": 21.1,
+   "n_references_ai": 22.84,
+   "n_references_human": 25.76
+  },
+  {
+   "subject": "cs.CC",
+   "n_ai": 19,
+   "n_human": 19,
+   "share_pinpoint_specific_ai": 0.6067319352514032,
+   "share_pinpoint_specific_human": 0.0933774084761767,
+   "share_in_proof_ai": 0.10926137255876077,
+   "share_in_proof_human": 0.041339678706113214,
+   "share_intro_or_front_ai": 0.6027792940481556,
+   "share_intro_or_front_human": 0.558264520054206,
+   "median_reference_age_ai": 19.05263157894737,
+   "median_reference_age_human": 15.368421052631579,
+   "n_references_ai": 18.31578947368421,
+   "n_references_human": 25.894736842105264
+  },
+  {
+   "subject": "math.MG",
+   "n_ai": 18,
+   "n_human": 18,
+   "share_pinpoint_specific_ai": 0.7077534214145359,
+   "share_pinpoint_specific_human": 0.16672826096548973,
+   "share_in_proof_ai": 0.12120455235720262,
+   "share_in_proof_human": 0.09128451834148989,
+   "share_intro_or_front_ai": 0.5517548318187917,
+   "share_intro_or_front_human": 0.42369576330077574,
+   "median_reference_age_ai": 15.75,
+   "median_reference_age_human": 21.86111111111111,
+   "n_references_ai": 17.88888888888889,
+   "n_references_human": 25.27777777777778
+  },
+  {
+   "subject": "math.FA",
+   "n_ai": 18,
+   "n_human": 18,
+   "share_pinpoint_specific_ai": 0.7635978583896073,
+   "share_pinpoint_specific_human": 0.2789476297347963,
+   "share_in_proof_ai": 0.10852862156552416,
+   "share_in_proof_human": 0.07612556412953801,
+   "share_intro_or_front_ai": 0.5662389327443313,
+   "share_intro_or_front_human": 0.4862978900561295,
+   "median_reference_age_ai": 20.52777777777778,
+   "median_reference_age_human": 22.5,
+   "n_references_ai": 13.666666666666666,
+   "n_references_human": 23.77777777777778
+  },
+  {
+   "subject": "math.DS",
+   "n_ai": 17,
+   "n_human": 17,
+   "share_pinpoint_specific_ai": 0.601807732020412,
+   "share_pinpoint_specific_human": 0.16020269091038572,
+   "share_in_proof_ai": 0.09330024933487714,
+   "share_in_proof_human": 0.054127471546023216,
+   "share_intro_or_front_ai": 0.6316154262832819,
+   "share_intro_or_front_human": 0.45104422855666615,
+   "median_reference_age_ai": 20.11764705882353,
+   "median_reference_age_human": 19.705882352941178,
+   "n_references_ai": 17.352941176470587,
+   "n_references_human": 31.470588235294116
+  },
+  {
+   "subject": "quant-ph",
+   "n_ai": 16,
+   "n_human": 16,
+   "share_pinpoint_specific_ai": 0.4665902029787631,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.08296954508804831,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.5384545150743025,
+   "share_intro_or_front_human": 0.5313007013832186,
+   "median_reference_age_ai": 17.75,
+   "median_reference_age_human": 9.375,
+   "n_references_ai": 25.1875,
+   "n_references_human": 52.9375
+  },
+  {
+   "subject": "math.AT",
+   "n_ai": 14,
+   "n_human": 14,
+   "share_pinpoint_specific_ai": 0.8435413861424764,
+   "share_pinpoint_specific_human": 0.21999322224981044,
+   "share_in_proof_ai": 0.38712870073259337,
+   "share_in_proof_human": 0.11710990628426222,
+   "share_intro_or_front_ai": 0.30553356884160865,
+   "share_intro_or_front_human": 0.3273987525276671,
+   "median_reference_age_ai": 23.357142857142858,
+   "median_reference_age_human": 18.392857142857142,
+   "n_references_ai": 31.571428571428573,
+   "n_references_human": 31.142857142857142
+  },
+  {
+   "subject": "math.RT",
+   "n_ai": 9,
+   "n_human": 9,
+   "share_pinpoint_specific_ai": 0.7504605184280498,
+   "share_pinpoint_specific_human": 0.37398253434133744,
+   "share_in_proof_ai": 0.23346314400978319,
+   "share_in_proof_human": 0.15817060740087271,
+   "share_intro_or_front_ai": 0.4463121626651334,
+   "share_intro_or_front_human": 0.28388418183367714,
+   "median_reference_age_ai": 15.055555555555555,
+   "median_reference_age_human": 17.88888888888889,
+   "n_references_ai": 31.22222222222222,
+   "n_references_human": 32.77777777777778
+  },
+  {
+   "subject": "gr-qc",
+   "n_ai": 8,
+   "n_human": 8,
+   "share_pinpoint_specific_ai": 0.45444889494521173,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.44171969230316394,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.37272396028620647,
+   "share_intro_or_front_human": 0.4256877415637873,
+   "median_reference_age_ai": 19.6875,
+   "median_reference_age_human": 10.3125,
+   "n_references_ai": 28.625,
+   "n_references_human": 73.875
+  },
+  {
+   "subject": "math.SG",
+   "n_ai": 8,
+   "n_human": 8,
+   "share_pinpoint_specific_ai": 0.6472064682568806,
+   "share_pinpoint_specific_human": 0.21122038962335457,
+   "share_in_proof_ai": 0.2125680104503193,
+   "share_in_proof_human": 0.06406249627622432,
+   "share_intro_or_front_ai": 0.3766520367438658,
+   "share_intro_or_front_human": 0.3683615110138834,
+   "median_reference_age_ai": 23.375,
+   "median_reference_age_human": 12.0,
+   "n_references_ai": 24.125,
+   "n_references_human": 26.75
+  },
+  {
+   "subject": "cs.LG",
+   "n_ai": 7,
+   "n_human": 7,
+   "share_pinpoint_specific_ai": 0.760321051497522,
+   "share_pinpoint_specific_human": 0.02832512315270936,
+   "share_in_proof_ai": 0.18774689362924657,
+   "share_in_proof_human": 0.007389162561576354,
+   "share_intro_or_front_ai": 0.4285606550312433,
+   "share_intro_or_front_human": 0.30363195375743013,
+   "median_reference_age_ai": 11.785714285714286,
+   "median_reference_age_human": 4.714285714285714,
+   "n_references_ai": 15,
+   "n_references_human": 39
+  },
+  {
+   "subject": "math.CV",
+   "n_ai": 7,
+   "n_human": 7,
+   "share_pinpoint_specific_ai": 0.64801231738552,
+   "share_pinpoint_specific_human": 0.21101190476190476,
+   "share_in_proof_ai": 0.2552347513506171,
+   "share_in_proof_human": 0.09627551020408164,
+   "share_intro_or_front_ai": 0.560133387011527,
+   "share_intro_or_front_human": 0.3657444341372913,
+   "median_reference_age_ai": 26.214285714285715,
+   "median_reference_age_human": 17.916666666666668,
+   "n_references_ai": 21.714285714285715,
+   "n_references_human": 20.571428571428573
+  },
+  {
+   "subject": "math.GT",
+   "n_ai": 6,
+   "n_human": 6,
+   "share_pinpoint_specific_ai": 0.7791516104018694,
+   "share_pinpoint_specific_human": 0.20170044258094572,
+   "share_in_proof_ai": 0.3516279123379343,
+   "share_in_proof_human": 0.11857732099333572,
+   "share_intro_or_front_ai": 0.4532889737522165,
+   "share_intro_or_front_human": 0.2734411626448831,
+   "median_reference_age_ai": 24.333333333333332,
+   "median_reference_age_human": 23.5,
+   "n_references_ai": 27.166666666666668,
+   "n_references_human": 51.833333333333336
+  },
+  {
+   "subject": "math.KT",
+   "n_ai": 5,
+   "n_human": 5,
+   "share_pinpoint_specific_ai": 0.8308368698420918,
+   "share_pinpoint_specific_human": 0.3757951829380401,
+   "share_in_proof_ai": 0.26134008506802087,
+   "share_in_proof_human": 0.05933075933075933,
+   "share_intro_or_front_ai": 0.4724869448880066,
+   "share_intro_or_front_human": 0.3281400709972139,
+   "median_reference_age_ai": 22.2,
+   "median_reference_age_human": 20.4,
+   "n_references_ai": 24.2,
+   "n_references_human": 30.6
+  },
+  {
+   "subject": "math.AC",
+   "n_ai": 5,
+   "n_human": 5,
+   "share_pinpoint_specific_ai": 0.7448389949726726,
+   "share_pinpoint_specific_human": 0.45044726440607447,
+   "share_in_proof_ai": 0.2839983483938981,
+   "share_in_proof_human": 0.15190174051730115,
+   "share_intro_or_front_ai": 0.4804050718465821,
+   "share_intro_or_front_human": 0.5804265814277256,
+   "median_reference_age_ai": 17.0,
+   "median_reference_age_human": 13.2,
+   "n_references_ai": 27.4,
+   "n_references_human": 18
+  },
+  {
+   "subject": "math.LO",
+   "n_ai": 4,
+   "n_human": 4,
+   "share_pinpoint_specific_ai": 0.7165064102564103,
+   "share_pinpoint_specific_human": 0.36667707032875574,
+   "share_in_proof_ai": 0.09647435897435896,
+   "share_in_proof_human": 0.17176446109030377,
+   "share_intro_or_front_ai": 0.5887820512820513,
+   "share_intro_or_front_human": 0.4591136079900125,
+   "median_reference_age_ai": 12.5,
+   "median_reference_age_human": 14.125,
+   "n_references_ai": 16.25,
+   "n_references_human": 15.25
+  },
+  {
+   "subject": "cs.GT",
+   "n_ai": 4,
+   "n_human": 4,
+   "share_pinpoint_specific_ai": 0.5261904761904762,
+   "share_pinpoint_specific_human": 0.03125,
+   "share_in_proof_ai": 0.1794312169312169,
+   "share_in_proof_human": 0.09055669451951252,
+   "share_intro_or_front_ai": 0.5832671957671958,
+   "share_intro_or_front_human": 0.6188245503680925,
+   "median_reference_age_ai": 9.25,
+   "median_reference_age_human": 4.375,
+   "n_references_ai": 25.5,
+   "n_references_human": 31
+  },
+  {
+   "subject": "math.RA",
+   "n_ai": 3,
+   "n_human": 3,
+   "share_pinpoint_specific_ai": 0.7663636363636364,
+   "share_pinpoint_specific_human": 0.14400584795321636,
+   "share_in_proof_ai": 0.10926406926406926,
+   "share_in_proof_human": 0.0804093567251462,
+   "share_intro_or_front_ai": 0.48683982683982685,
+   "share_intro_or_front_human": 0.4859283625730994,
+   "median_reference_age_ai": 17.833333333333332,
+   "median_reference_age_human": 18.5,
+   "n_references_ai": 17.333333333333332,
+   "n_references_human": 18.666666666666668
+  },
+  {
+   "subject": "cs.DM",
+   "n_ai": 3,
+   "n_human": 3,
+   "share_pinpoint_specific_ai": 0.6930555555555555,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.06666666666666667,
+   "share_in_proof_human": 0.25925925925925924,
+   "share_intro_or_front_ai": 0.5875,
+   "share_intro_or_front_human": 0.1784313725490196,
+   "median_reference_age_ai": 25.166666666666668,
+   "median_reference_age_human": 15.0,
+   "n_references_ai": 10.666666666666666,
+   "n_references_human": 20
+  },
+  {
+   "subject": "cond-mat",
+   "n_ai": 3,
+   "n_human": 0,
+   "share_pinpoint_specific_ai": 0.5378378378378378,
+   "share_pinpoint_specific_human": null,
+   "share_in_proof_ai": 0.1400900900900901,
+   "share_in_proof_human": null,
+   "share_intro_or_front_ai": 0.3843843843843844,
+   "share_intro_or_front_human": null,
+   "median_reference_age_ai": 36.166666666666664,
+   "median_reference_age_human": null,
+   "n_references_ai": 14.666666666666666,
+   "n_references_human": null
+  },
+  {
+   "subject": "math.SP",
+   "n_ai": 3,
+   "n_human": 3,
+   "share_pinpoint_specific_ai": 0.5266666666666667,
+   "share_pinpoint_specific_human": 0.4100616547464593,
+   "share_in_proof_ai": 0.08935064935064935,
+   "share_in_proof_human": 0.07941009642654566,
+   "share_intro_or_front_ai": 0.6103030303030303,
+   "share_intro_or_front_human": 0.30775650178314135,
+   "median_reference_age_ai": 27.333333333333332,
+   "median_reference_age_human": 17.666666666666668,
+   "n_references_ai": 19,
+   "n_references_human": 40
+  },
+  {
+   "subject": "cs.LO",
+   "n_ai": 2,
+   "n_human": 2,
+   "share_pinpoint_specific_ai": 0.7916666666666667,
+   "share_pinpoint_specific_human": 0.2647058823529412,
+   "share_in_proof_ai": 0.05416666666666667,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.6583333333333333,
+   "share_intro_or_front_human": 0.2668067226890756,
+   "median_reference_age_ai": 17.25,
+   "median_reference_age_human": 9.5,
+   "n_references_ai": 22.5,
+   "n_references_human": 38
+  },
+  {
+   "subject": "cs.IT",
+   "n_ai": 2,
+   "n_human": 2,
+   "share_pinpoint_specific_ai": 0.4214285714285714,
+   "share_pinpoint_specific_human": 0.05786196159833938,
+   "share_in_proof_ai": 0.0,
+   "share_in_proof_human": 0.03347171769590036,
+   "share_intro_or_front_ai": 0.2857142857142857,
+   "share_intro_or_front_human": 0.40788790866632074,
+   "median_reference_age_ai": 9.5,
+   "median_reference_age_human": 10.0,
+   "n_references_ai": 19,
+   "n_references_human": 52
+  },
+  {
+   "subject": "hep-th",
+   "n_ai": 2,
+   "n_human": 2,
+   "share_pinpoint_specific_ai": 0.525,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.2,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.4829545454545454,
+   "share_intro_or_front_human": 0.49786324786324787,
+   "median_reference_age_ai": 26.0,
+   "median_reference_age_human": 12.5,
+   "n_references_ai": 35.5,
+   "n_references_human": 21
+  },
+  {
+   "subject": "math.CT",
+   "n_ai": 2,
+   "n_human": 2,
+   "share_pinpoint_specific_ai": 0.8903452685421995,
+   "share_pinpoint_specific_human": 0.5793650793650793,
+   "share_in_proof_ai": 0.358695652173913,
+   "share_in_proof_human": 0.07142857142857142,
+   "share_intro_or_front_ai": 0.34271099744245526,
+   "share_intro_or_front_human": 0.33531746031746035,
+   "median_reference_age_ai": 16.25,
+   "median_reference_age_human": 16.0,
+   "n_references_ai": 20,
+   "n_references_human": 14.5
+  },
+  {
+   "subject": "math.QA",
+   "n_ai": 2,
+   "n_human": 2,
+   "share_pinpoint_specific_ai": 0.8768292682926829,
+   "share_pinpoint_specific_human": 0.14516129032258066,
+   "share_in_proof_ai": 0.31422764227642275,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.35609756097560974,
+   "share_intro_or_front_human": 0.27419354838709675,
+   "median_reference_age_ai": 13.25,
+   "median_reference_age_human": 22.5,
+   "n_references_ai": 25.5,
+   "n_references_human": 32.5
+  },
+  {
+   "subject": "physics.chem-ph",
+   "n_ai": 1,
+   "n_human": 1,
+   "share_pinpoint_specific_ai": 0.5185185185185185,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.4444444444444444,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.5185185185185185,
+   "share_intro_or_front_human": 1.0,
+   "median_reference_age_ai": 11.5,
+   "median_reference_age_human": 31,
+   "n_references_ai": 22,
+   "n_references_human": 20
+  },
+  {
+   "subject": "math.OC",
+   "n_ai": 1,
+   "n_human": 1,
+   "share_pinpoint_specific_ai": 0.125,
+   "share_pinpoint_specific_human": 0.04081632653061224,
+   "share_in_proof_ai": 0.0,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.875,
+   "share_intro_or_front_human": 0.5102040816326531,
+   "median_reference_age_ai": 19,
+   "median_reference_age_human": 4,
+   "n_references_ai": 9,
+   "n_references_human": 33
+  },
+  {
+   "subject": "cs.FL",
+   "n_ai": 1,
+   "n_human": 1,
+   "share_pinpoint_specific_ai": 0.21052631578947367,
+   "share_pinpoint_specific_human": 0.08108108108108109,
+   "share_in_proof_ai": 0.0,
+   "share_in_proof_human": 0.08108108108108109,
+   "share_intro_or_front_ai": 0.631578947368421,
+   "share_intro_or_front_human": 0.13513513513513514,
+   "median_reference_age_ai": 26,
+   "median_reference_age_human": 34,
+   "n_references_ai": 17,
+   "n_references_human": 27
+  },
+  {
+   "subject": "cs.CG",
+   "n_ai": 1,
+   "n_human": 1,
+   "share_pinpoint_specific_ai": 0.2962962962962963,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.07407407407407407,
+   "share_in_proof_human": 0.0,
+   "share_intro_or_front_ai": 0.7777777777777778,
+   "share_intro_or_front_human": 0.13636363636363635,
+   "median_reference_age_ai": 18,
+   "median_reference_age_human": 17.5,
+   "n_references_ai": 19,
+   "n_references_human": 16
+  },
+  {
+   "subject": "cs.AI",
+   "n_ai": 1,
+   "n_human": 1,
+   "share_pinpoint_specific_ai": 0.9166666666666666,
+   "share_pinpoint_specific_human": 0.0,
+   "share_in_proof_ai": 0.0,
+   "share_in_proof_human": 0.0392156862745098,
+   "share_intro_or_front_ai": 0.8333333333333334,
+   "share_intro_or_front_human": 0.3137254901960784,
+   "median_reference_age_ai": 18,
+   "median_reference_age_human": 6.0,
+   "n_references_ai": 7,
+   "n_references_human": 36
+  }
+ ],
+ "ai_internal_citations": {
+  "references": 599,
+  "citing_papers": 388,
+  "cited_papers": 363,
+  "cites_later_release": 50,
+  "self_citations": 1
+ },
+ "ai_doi_check": {
+  "title_match": 12453,
+  "title_mismatch": 78,
+  "exists_no_title_to_compare": 76,
+  "not_found": 21,
+  "exists_no_metadata": 26,
+  "title_partial": 31
+ }
+}

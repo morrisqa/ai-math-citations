@@ -1,0 +1,123 @@
+doi,status,title_similarity,title_cited,title_registered,first_author_cited,first_author_registered,year_cited,years_registered,n_citing_refs,example_preprint,verdict
+10.1090/pspum/094/01620,not_found,,Algebraic structures of groups of birational transformations,,blanc,,2017,,3,Conditional-good-minimal-models-for-compact-Kahler-fourfolds-October-5-2026,
+10.1090/pspum/102/01809,not_found,,Totally disconnected groups (not) acting on two-manifolds,,pardon,,2019,,1,The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026,
+10.1090/S0002-9939-1956-0075933-9,not_found,,Algebras over infinite fields,,amitsur,,1956,,1,A-Counterexample-to-Kuroshs-Division-Ring-Problem-September-23-2026,
+10.1093/oso/9780198511762.001.0001,not_found,,Analytic K-Homology,,higson,,2000,,1,Failure-of-rational-injectivity-for-maximal-coarse-assembly-October-5-2026,
+10.1145/1347082.1347125,not_found,,Proceedings of the Nineteenth Annual ACM–SIAM Symposium on Discrete Algorithms (SODA),,thomas holenstein,,2008,,1,Uniform-quasipolynomial-time-trace-reconstruction-October-5-2026,
+10.11606/resimeusp.v2i2.74798,not_found,,"Some of my favourite problems in number theory, combinatorics, and geometry",,erdos,,1995,,1,An-asymptotic-formula-for-the-number-of-totients-September-25-2026,
+10.1515/9781400882498,not_found,,"Simple Algebras, Base Change, and the Advanced Theory of the Trace Formula",,arthur,,1989,,1,The-Selmer-converse-for-elliptic-curves-at-every-prime-September-24-2026,
+10.19086/da.117575,not_found,,Monochromatic sums and products of polynomials,,alweiss,,2024,,1,Monochromatic-finite-sums-and-products-in-the-positive-integers-September-23-2026,
+10.19086/da.144978,not_found,,Universally optimal periodic configurations in the plane,,hardin,,2025,,2,An-atomic-certificate-for-triangular-lattice-universal-optimality-September-26-2026,
+10.19086/da.57741,not_found,,Relationships between the number of inputs and other complexity measures of Boolean functions,,wellens,,2022,,1,A-superquadratic-separation-between-sensitivity-and-block-sensitivity-September-25-2026,
+10.24033/ast.198,not_found,,Flips and abundance for algebraic threefolds,,,,1992,,3,Conditional-good-minimal-models-for-compact-Kahler-fourfolds-October-5-2026,
+10.24033/ast.245,not_found,,Some conjectures extending Castelnuovo theory,,d eisenbud,,1993,,1,Commuting-Division-Coefficient-Forms-and-the-Artinian-Eisenbud-Green-Harris-Conjecture-September-23-2026,
+10.24033/ast.534,not_found,,The display of a formal $p$-divisible group,,zink,,2002,,1,Filtered-chromatic-splitting-at-generic-primes-September-25-2026,
+10.24033/ast.93,not_found,,Sur quelques résultats récents de transcendance,,laurent,,1991,,1,Open-Homomorphisms-of-Global-Solvably-Closed-Galois-Groups-October-5-2026,
+10.4007/annals.2003.157.891,not_found,,"On the nonnegativity of $L(\tfrac12,\pi)$ for $SO_2n+1$",,lapid,,2003,,1,The-two-primary-Birch-Swinnerton-Dyer-formula-in-Selmer-corank-at-most-one-September-24-2026,
+10.47013/16.4.6,not_found,,"The cycle-complete graph Ramsey numbers $R(C_n,K_8)$, for $10\le n\le15$",,baniabedalruhman,,2023,,1,Cycle-clique-Ramsey-numbers-September-25-2026,
+10.1007/3-540-28517-2,title_mismatch,0.425,Operator Algebras: Theory of $C^*$-Algebras and von Neumann Algebras,Operator Algebras,blackadar,blackadar,2006,2006,5,Kadisons-similarity-theorem-through-uniform-derivation-estimates-September-23-2026,
+10.1007/978-0-8176-4575-5,title_mismatch,0.108,Euler systems,The Grothendieck Festschrift: A Collection of Articles Written in Honor of the 60th Birthday of Alexander Grothendieck,kolyvagin,cartier,1990,2007,1,The-two-primary-Birch-Swinnerton-Dyer-formula-in-Selmer-corank-at-most-one-September-24-2026,
+10.1007/978-1-4757-6804-6,title_mismatch,0.369,"The Symmetric Group: Representations, Combinatorial Algorithms, and Symmetric Functions",The Symmetric Group,sagan,sagan,2001,2001,7,A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026,
+10.1007/978-3-540-37855-6,title_mismatch,0.224,Les schémas de modules de courbes elliptiques,"Modular Functions of One Variable II: Proceedings International Summer School University of Antwerp, RUCA July 17–August 3, 1972",deligne,deligne,1973,1973,1,The-two-primary-Birch-Swinnerton-Dyer-formula-in-Selmer-corank-at-most-one-September-24-2026,
+10.1007/BF01199400,title_mismatch,0.052,Math. Z.,Abhandlungen zur Theorie der konformen Abbildung: VI. Abbildung mehrfach zusammenh�ngender schlichter Bereiche auf Kreisbereiche. Uniformisierung hyperelliptischer Kurven. (Iterationsmethoden),paul koebe,koebe,1920,1920,1,Koebes-Circle-Domain-Conjecture-September-23-2026,
+10.1007/BF01205052,title_mismatch,0.571,$RL\subseteqSC$,RL $$ \subseteq $$ SC,nisan,nisan,1994,1994,1,Exact-Derandomization-of-Logarithmic-Space-L-equals-RL-equals-BPL-September-23-2026,
+10.1007/BF01212904,title_mismatch,0.143,Math. Z.,Das algebraische Analogon zu einem Satze von Fej�r,o toeplitz,toeplitz,1918,1918,1,A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026,
+10.1007/BF01399540,title_mismatch,0.169,Math. Ann.,Abelian varieties attached to polarizedK 3-surfaces,kuga,kuga,1967,1967,1,A-Conditional-Reduction-for-Algebraic-Kuga-Satake-Correspondences-September-10-2026,
+10.1007/BF01455888,title_mismatch,0.184,Mathematische Annalen,Das Identit�tsproblem f�r Gruppen mit einer definierenden Relation,w magnus,magnus,1932,1932,1,Virtual-compact-specialness-of-hyperbolic-one-relator-groups-September-25-2026,
+10.1007/BF01456931,title_mismatch,0.182,Math. Ann.,�ber Abbildung von Mannigfaltigkeiten,l e j brouwer,brouwer,1911,1911,1,Pettys-projection-volume-conjecture-in-dimensions-at-least-four-September-24-2026,
+10.1007/BF01609854,title_mismatch,0.333,Communications in Mathematical Physics,On the decay of correlations inSO(n)-symmetric ferromagnets,mcbryan,mcbryan,1977,1977,2,The-Critical-Spin-Field-of-the-Planar-XY-Model-October-5-2026,
+10.1007/BF02698699,title_mismatch,0.174,Volume and bounded cohomology,Stability of a surface-charged viscous jet in an electric field,gromov,shkadov,1982,1998,1,Positive-scalar-curvature-forces-rational-inessentiality-September-23-2026,
+10.1007/BF02771562,title_mismatch,0.27,Israel Journal of Mathematics,On the subspaces ofL p (p&gt;2) spanned by sequences of independent random variables,,rosenthal,1970,1970,1,Subpolynomial-dimension-reduction-in-Lp-September-23-2026,
+10.1007/s00039-004-0473-8,title_mismatch,0.354,Geometric and Functional Analysis,Embedding the diamond graph in Lp and dimension reduction in L1,lee,lee,2004,2004,1,Subpolynomial-dimension-reduction-in-Lp-September-23-2026,
+10.1007/s000390050065,title_mismatch,0.236,Geometric and Functional Analysis,A New Proof of Szemer�di's Theorem for Arithmetic Progressions of Length Four,w t gowers,gowers,1998,1998,1,The-hypercube-Ramsey-number-has-linear-order-September-23-2026,
+10.1007/s00493-004-0015-x,title_mismatch,0.235,Combinatorica,"Cuts, Trees and ℓ1-Embeddings of Graphs*",anupam gupta,gupta,2004,2004,1,L1-Embeddings-of-Graphs-of-Bounded-Treewidth-September-23-2026,
+10.1007/s10955-004-2055-4,title_mismatch,0.212,Journal of Statistical Physics,"The Repulsive Lattice Gas, the Independent-Set Polynomial, and the Lov�sz Local Lemma",scott,scott,2005,2005,2,Cap-selected-amplitudes-and-triangle-chords-for-honeycomb-walks-September-26-2026,
+10.1016/0168-0072(83)90038-6,title_mismatch,0.25,Annals of Pure and Applied Logic,∑11-Formulae on finite structures,,ajtai,1983,1983,1,Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026,
+10.1016/S0195-6698(13)80131-X,title_mismatch,0.215,European Journal of Combinatorics,Isometric Embedding in lp-spaces,,ball,1990,1990,1,Subpolynomial-dimension-reduction-in-Lp-September-23-2026,
+10.1017/S0008439500025765,title_mismatch,0.516,Solution to Problem 10,Solutions,moser,,1961,1961 2019,1,The-Euclidean-plane-is-not-five-colorable-September-23-2026,
+10.1088/1742-5468/2009/12/P12017,title_mismatch,0.147,J. Stat. Mech.,An eigenvalue method for computing the largest relaxation time of disordered systems,monthus,monthus,2009,2009,1,Stretched-exponential-barriers-for-typical-SK-initial-states-September-24-2026,
+10.1109/FOCS.2013.11,title_mismatch,0.264,Proceedings of the 54th Annual IEEE Symposium on Foundations of Computer Science (FOCS),Approximating Bin Packing within O(log OPT · Log Log OPT) Bins,in,rothvoss,2013,2013,1,Additive-hardness-and-unbounded-configuration-gaps-in-bin-packing-September-24-2026,
+10.1137/S0097539796324661,title_mismatch,0.3,SIAM Journal on Computing,\boldmath A $2\frac12$-Approximation Algorithm for Shortest Superstring,,sweedyk,1999,2000 2006,1,A-Polynomial-Time-2-Approximation-for-Shortest-Common-Superstring-September-24-2026,
+10.1137/S0895480102417379,title_mismatch,0.216,SIAM Journal on Discrete Mathematics,Embedding k-Outerplanar Graphs into l1,chandra chekuri,chekuri,2006,2006,1,L1-Embeddings-of-Graphs-of-Bounded-Treewidth-September-23-2026,
+10.1142/S0218196714500143,title_mismatch,0.235,International Journal of Algebra and Computation,On the geometry of burnside quotients of torsion free hyperbolic groups,r coulon,coulon,2014,2014,1,Virtual-compact-specialness-of-hyperbolic-one-relator-groups-September-25-2026,
+10.1145/1089023.1089026,title_mismatch,0.235,Journal of the ACM,"On the impossibility of dimension reduction in l
+            <sub>1</sub>",brinkman,brinkman,2005,2005,1,Subpolynomial-dimension-reduction-in-Lp-September-23-2026,
+10.1145/3055399.3055494,title_mismatch,0.29,Proceedings of the 49th Annual ACM SIGACT Symposium on Theory of Computing (STOC),"Trace reconstruction with exp(O(n
+            <sup>1/3</sup>
+            )) samples",nazarov,nazarov,2017,2017,1,Uniform-quasipolynomial-time-trace-reconstruction-October-5-2026,
+10.1145/3618260.3649662,title_mismatch,0.245,Proceedings of the 56th Annual ACM Symposium on Theory of Computing (STOC 2024),On the Pauli Spectrum of QAC0,shivam nadimpalli,nadimpalli,2024,2024,1,Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026,
+10.1145/3798129.3800922,title_mismatch,0.243,Proceedings of the 58th Annual ACM Symposium on Theory of Computing (STOC 2026),Improved Lower Bounds for QAC0,malvika raj joshi,joshi,2026,2026,1,Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026,
+10.11948/2017094,title_mismatch,0.333,Journal of Applied Analysis and Computation,EFFECTIVE CONSTRUCTION OF POINCAR&amp;#201;-BENDIXSON REGIONS,a gasull,armengol gasull,2017,2017,1,two-limit-cycles-for-quintic-lienard-systems-September-24-2026,
+10.1215/S0012-7094-02-11522-1,title_mismatch,0.384,Sur l'unicité des types pour GL$_2$,Multiplicités modulaires et représentations de ${\rm GL}\sb 2(\mathbf {Z}\sb p)$ et de ${\rm Gal}(\overline {\mathbf {Q}}\sb p/\mathbf {Q}\sb p)$ en $\ell=p$. Appendice par Guy Henniart. Sur l'unicité des types pour ${\rm GL}\sb 2$,henniart,breuil,2002,2002,1,Unrestricted-pro-modularity-at-the-prime-two-October-4-2026,
+10.1307/mmj/1028999180,title_mismatch,0.23,Michigan Math. J.,Conditions for the analyticity of certian sets.,e bishop,bishop,1964,1964,1,Global-Spherical-Shells-on-Minimal-Surfaces-of-Class-VII-September-24-2026,
+10.21136/CPMF.1939.109441,title_mismatch,0.469,Ein Übertragungsprinzip für konvexe Körper,A theorem on transfer for convex bodies,mahler,mahler,1939,1939 2008,3,Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026,
+10.24033/asens.2239,title_mismatch,0.255,Spectral gap for inclusions of von Neumann algebras,Cartan subalgebras of amalgamated free product $II_1$ factors,ioana,ioana,2015,2015,1,Bounded-recovery-for-modular-spectral-averages-September-23-2026,
+10.24033/asens.2641,title_mismatch,0.427,A ``strange'' functional equation for Eisenstein series and miraculous duality on the moduli stack of bundles,Algebraization Techniques and Rigid-Analytic Artin-Grothendieck Vanishing,gaitsgory,gabber,2017,2026,1,Global-quantum-geometric-Langlands-at-irrational-level-October-4-2026,
+10.37236/1903,title_mismatch,0.283,Electronic Journal of Combinatorics,Around the Razumov&amp;ndash;Stroganov Conjecture: Proof of a Multi-Parameter Sum Rule,francesco,di francesco,2005,2005,6,Cap-selected-amplitudes-and-triangle-chords-for-honeycomb-walks-September-26-2026,
+10.4007/annals.2012.175.3.14,title_mismatch,0.2,Annals of Mathematics,The connective constant of the honeycomb lattice equals sqrt(2+sqrt 2),duminil copin,duminil copin,2012,2012,13,Cap-selected-amplitudes-and-triangle-chords-for-honeycomb-walks-September-26-2026,
+10.4171/DM/421,title_mismatch,0.103,Doc. Math.,"The virtual Haken conjecture (with an appendix by Ian Agol, Daniel Groves and Jason Manning)",i agol,agol,2013,2013,2,A-Modulus-Proof-of-Cannons-Conjecture-September-23-2026,
+10.4171/OWR/2013/42,title_mismatch,0.33,"$\ell^2$-Betti Numbers, Cost, and the Free Uniform Spanning Forest","Group Theory, Measure, and Asymptotic Invariants",lyons,abert,2013,2014,1,The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026,
+10.4171/OWR/2018/54,title_mismatch,0.395,A PDE approach to geometric inequalities,Convex Geometry and its Applications,stancu,barthe,2018,2019,1,The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026,
+10.4171/OWR/2022/21,title_mismatch,0.486,Rational approximations to Catalan's constant,Diophantische Approximationen,viola,bugeaud,2022,2023,1,Catalans-constant-is-irrational-September-24-2026,
+10.4171/OWR/2025/7,title_mismatch,0.316,The Heisenberg Ferromagnet: A Dilute Bose Gas in Disguise,Mini-Workshop: New Directions in Correlated Quantum Systems,seiringer,giacomelli,2025,2025,1,Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026,
+10.4230/LIPIcs.ITCS.2021.32,title_mismatch,0.293,12th Innovations in Theoretical Computer Science Conference (ITCS 2021),Bounds on the QAC^0 Complexity of Approximating Parity,in,rosenthal,2021,2021,1,Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026,
+10.4310/AJM.2011.v15.n2.a5,title_mismatch,0.293,Asian J. Math.,$Q$-universal desingularization,e bierstone,bierstone,2011,2011,1,Arithmetic-Stein-degree-bounds-for-log-Calabi-Yau-pairs-September-25-2026,
+10.48550/arXiv.2609.19172,title_mismatch,0.39,Tachikawa's second conjecture implies the Auslander–Reiten conjecture,On the homological conjectures for Artin algebras,enomoto,enomoto,2026,2026,1,An-explicit-counterexample-to-the-Auslander-Reiten-conjecture-September-23-2026,
+10.7907/nwsv-df59,title_mismatch,0.474,ACM 204: Matrix Analysis,ACM 204: Randomized Algorithms for Matrix Computations,tropp,tropp,2022,2021,1,One-sided-negative-sectional-curvature-and-the-holomorphic-Liouville-property-September-25-2026,
+10.1007/b98860,title_partial,0.6,Model Theory: An Introduction,Model Theory,marker,,2002,2002,1,Hilberts-tenth-problem-over-the-rational-numbers-September-24-2026,
+10.1007/BF01268065,title_partial,0.866,Isomorphic imbeddability of a semigroup with an enumerable set of defining relations into a finitely presented semigroup,Isomorphic embeddability of semigroups with countable sets of defining relations in finitely defined semigroups,murskii,murskii,1967,1967,1,Finite-algebraic-envelopes-and-the-Boone-Higman-conjecture-September-23-2026,
+10.1007/BF02196453,title_partial,0.824,The weak convergence of completely additive vector-valued set functions,Weak convergence of completely additive vector functions on a set,reshetnyak,reshetnyak,1968,1968,1,Equality-and-rigidity-in-the-spacetime-Penrose-inequality-September-27-2026,
+10.1007/s00039-016-0388-1,title_partial,0.827,Lagrangian isotopy of tori in $S^2\times S^2$ and $\mathbbCP^2$,Lagrangian isotopy of tori in $${S^2\times S^2}$$ S 2 × S 2 and $${{\mathbb{C}}P^2}$$ C P 2,dimitroglou rizell,dimitroglou rizell,2016,2016,1,A-counterexample-to-the-nearby-Lagrangian-conjecture-September-23-2026,
+10.1007/s00222-002-0280-5,title_partial,0.894,Erratum: Compact hyperkähler manifolds: basic results,Compact hyperk�hler manifolds: basic results,huybrechts,huybrechts,2003,2003,1,The-Strong-Hyperkahler-SYZ-Conjecture-September-23-2026,
+10.1007/s12220-017-9863-7,title_partial,0.882,"Ricci tensor on $RCD^*(K,N)$ spaces","Ricci Tensor on 
+                $$\mathrm{RCD}^*(K, N)$$
+                
+                    
+                        
+                            
+                                
+                                    RCD
+                                
+                                ∗
+                            
+                            
+                                (
+                                K
+                                ,
+                                N
+                                )
+                            
+                        
+                    
+                
+             Spaces",han,han,2018,2017 2018,1,Bi-Lipschitz-Coordinates-at-Regular-Points-of-Noncollapsed-RCD-Spaces-September-25-2026,
+10.1016/S0040-9383(99)00048-8,title_partial,0.807,Addendum to: On fibre space structures of a projective irreducible symplectic manifold,"On fibre space structures of a projective irreducible symplectic manifold, Topology 38, (1999) 79–83",matsushita,matsushita,2001,2001,1,The-Strong-Hyperkahler-SYZ-Conjecture-September-23-2026,
+10.1016/S1874-575X(02)80015-7,title_partial,0.874,Rational billiards and flat structures,Chapter 13 Rational billiards and flat structures,masur,,2002,2002,1,Ergodicity-of-triangular-billiards-with-an-irrational-angle-September-25-2026,
+10.1017/9781316795699,title_partial,0.89,Representations of Elementary Abelian $p$-Groups and Vector Bundles,Representations of Elementary Abelian &lt;I&gt;p&lt;/I&gt;-Groups and Vector Bundles,benson,benson,2017,2016 2017,1,Fiber-functors-for-finite-symmetric-tensor-categories-in-positive-characteristic-September-24-2026,
+10.1017/S0010437X26103406,title_partial,0.892,Abundance for threefolds in positive characteristic when $\nu=2$,"Abundance for threefolds in positive characteristic when nu equals 2
+                    <mml:math xmlns:xlink=""http://www.w3.org/1999/xlink"" xmlns:mnf=""http://cambridge.org/core/manifest"" xmlns:cup=""http://contentservices.cambridge.org"" xmlns:mml=""http://www.w3.org/1998/Math/MathML"" xmlns:m=""http://cambridge.org/core/metadata"" xmlns:core=""http://cambridge.org/core"" xmlns:c=""http://cambridge.org/core/content"">
+                      <mml:mi>ν</mml:mi>
+                      <mml:mo>=</mml:mo>
+                      <mml:mn>2</mml:mn>
+                    </mml:math>
+                    $\nu=2$",xu,xu,2026,2026,1,Log-abundance-in-numerical-dimension-one-for-threefolds-in-positive-characteristic-October-5-2026,
+10.1023/A:1016578408204,title_partial,0.891,Gravitational collapse: The role of general relativity,“Golden Oldie”: Gravitational Collapse: The Role of General Relativity,penrose,penrose,2002,2002,3,Generic-C1-Future-Inextendibility-Near-Rotating-Subextremal-Kerr-Spacetimes-September-23-2026,
+10.1070/IM1993v040n01ABEH001862,title_partial,0.833,Three-fold log flips,3-FOLD LOG FLIPS,shokurov,shokurov,1993,1993 2007,1,Uniform-Cartier-sections-for-Fano-type-contractions-September-25-2026,
+10.1090/gsm/236,title_partial,0.76,Alexandrov Geometry: Foundations,Alexandrov Geometry,alexander,alexander,2024,2024,1,Giglis-distributional-curvature-characterization-of-Alexandrov-spaces-September-24-2026,
+10.1103/PhysRevB.68.214403,title_partial,0.829,An extended variational principle for the SK spin-glass model,Extended variational principle for the Sherrington-Kirkpatrick spin-glass model,aizenman,aizenman,2003,2003,2,The-free-energy-of-the-Ising-random-perceptron-September-24-2026,
+10.1103/PhysRevLett.77.3296,title_partial,0.852,Summing up D-instantons,Summing up Dirichlet Instantons,ooguri,ooguri,1996,1996,1,Deforming-hypersymplectic-four-manifolds-to-hyperkahler-triples-September-23-2026,
+10.1109/18.720546,title_partial,0.667,The method of types,The method of types [information theory],csiszar,csiszar,1998,1998,1,Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026,
+10.1109/FOCS.2014.42,title_partial,0.891,$O(\log\logrank)$ Competitive Ratio for the Matroid Secretary Problem,O(log log Rank) Competitive Ratio for the Matroid Secretary Problem,lachish,lachish,2014,2014,1,One-Sample-Suffices-for-Matroid-Prophet-Inequalities-against-an-Almighty-Adversary-September-23-2026,
+10.1112/jlms/s1-41.1.367,title_partial,0.892,"On polynomials $\sum \pm z^m$, $\sum e^\alpha_m iz^m$, $z=e^i\theta$","On Polynomials ∑±nzm,∑eαminzm,z=e0i",littlewood,littlewood,1966,1966 2016,3,Asymptotically-minimal-maxima-of-real-Littlewood-polynomials-September-23-2026,
+10.1112/plms.12138,title_partial,0.655,Polynomial Wolff axioms and Kakeya-type estimates in $\mathbbR^4$,Polynomial Wolff axioms and Kakeya-type estimates in R4: POLYNOMIAL WOLFF AXIOMS AND KAKEYA-TYPE ESTIMATES IN R4,guth,guth,2018,2018,1,Every-four-dimensional-Kakeya-set-has-full-Hausdorff-dimension-September-24-2026,
+10.1145/3618260.3649664,title_partial,0.846,Tree Evaluation Is in Space $O(\log n \cdot \log\log n)$,Tree Evaluation Is in Space 𝑂 (log 𝑛 · log log 𝑛),cook,cook,2024,2024,1,Simulating-One-Tape-Time-in-Two-Fifths-Power-Space-September-25-2026,
+10.1215/00127094-2018-0066,title_partial,0.898,Nonvanishing for Threefolds in Characteristic $p>5$,Nonvanishing for 3-folds in characteristic p&gt;5,xu,xu,2019,2019,1,Abundance-in-numerical-dimension-one-for-terminal-threefolds-in-positive-characteristic-September-24-2026,
+10.2307/2952458,title_partial,0.88,$L^p$ estimates on the bilinear Hilbert transform for $2<p<\infty$,L p Estimates on the Bilinear Hilbert Transform for 2 &lt; p &lt; &amp;#8734,lacey,lacey,1997,1997,2,An-L3-bound-for-the-trilinear-Hilbert-transform-October-5-2026,
+10.4007/annals.2016.183.1.2,title_partial,0.846,Defining $\mathbbZ$ in $\mathbbQ$,Defining \mathbb Z in \mathbb Q,koenigsmann,koenigsmann,2016,2016,1,Hilberts-tenth-problem-over-the-rational-numbers-September-24-2026,
+10.4115/jla.2023.15.1,title_partial,0.794,"On preparation theorems for $\mathbbR_an,\exp$-definable functions","On preparation theorems for R&lt;sub&gt;an, exp&lt;/sub&gt;-definable functions",opris,opris,2023,2023,1,uniform-bounds-for-planar-polynomial-limit-cycles-September-24-2026,
+10.4153/S0008414X2400107X,title_partial,0.859,Uniform property $\Gamma$ and finite dimensional tracial boundaries,"Uniform property
+                    <mml:math xmlns:xlink=""http://www.w3.org/1999/xlink"" xmlns:mnf=""http://cambridge.org/core/manifest"" xmlns:cup=""http://contentservices.cambridge.org"" xmlns:mml=""http://www.w3.org/1998/Math/MathML"" xmlns:m=""http://cambridge.org/core/metadata"" xmlns:core=""http://cambridge.org/core"" xmlns:c=""http://cambridge.org/core/content"" display=""inline"">
+                      <mml:mi mathvariant=""normal"">Γ</mml:mi>
+                    </mml:math>
+                    $ \Gamma $
+normal upper Gamma and finite dimensional tracial boundaries",evington,evington,2026,2025 2026,1,Tracial-projection-methods-and-uniform-property-Gamma-September-23-2026,
