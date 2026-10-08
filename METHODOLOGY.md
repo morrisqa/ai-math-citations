@@ -64,6 +64,12 @@ were listed through the arXiv API (`data/raw/arxiv_listings/`). Categories with 
 
 **Final selection.** Usability is re-checked with the current parser when references are extracted (`scripts/extract_arxiv_citations.py`). In each stratum the final sample is the **first `ratio × n_AI` usable candidates in random-rank order** (`data/human_sample.csv`). This keeps the sample tied to the random ranking even when a parser improvement turns a previously rejected candidate into a usable one. For example, adding amsrefs support reduced `no_bibliography` exclusions from 50 to 22 among the first 896 candidates examined. The remaining exclusions mostly have no bibliography that can be linked to `\cite` commands, for example `\bibitem{}` entries cited via `\ref`, or plain `\item` lists. `--ratio 1` gives the balanced 1:1 sample available after the downloader's first pass.
 
+**Final sample (2026-10-08).** 1,374 human papers, 2 per subject-labelled OpenAI preprint in all 42 strata, with 41,545 references. 1,452 candidates were examined: 1,378 usable, 64 without a linkable bibliography, 6 PDF-only, 1 not LaTeX, and 3 failed downloads (see below).
+
+**Log recovery.** During the second download pass, a `git rebase --autostash` replaced `human_sample_log.csv` on disk while the downloader held it open. The downloader's subsequent 384 rows went to an unlinked file; the downloaded sources were unaffected. `scripts/recover_sample_log.py` rebuilt the missing rows from the sources on disk. Because the downloader works through each stratum strictly in rank order, a candidate ranked below the last one examined but with no source on disk must have failed; these 3 are logged as `failed_unrecorded`. They are unusable either way, so the selection is the same as if the log had been intact.
+
+**cond-mat.** arXiv's `cat:` search does not match subclasses of an archive-level label, so the first listing of the 3-preprint `cond-mat` stratum came back empty. It was rebuilt by querying the nine `cond-mat.*` subclasses, with the same day-sampling rule and seed scheme. Regenerating the candidate file left every other stratum's ranking unchanged (all 170,556 rows identical).
+
 **Access etiquette.** All arXiv requests go through `scripts/arxiv_api.py`, which waits at least 3 seconds between requests (arXiv's published limit) and backs off for 1–6 minutes on errors, including HTTP 429.
 
 ### Reference extraction for the human corpus
@@ -192,4 +198,5 @@ The scripts use only the Python 3 standard library. Raw downloads under `data/ra
 | 2026-10-07 | Add DOI accuracy check (Crossref → DataCite → doi.org) and the OpenAI internal citation network. |
 | 2026-10-07 | Add amsrefs parsing. The final sample is re-derived as the first N usable candidates by random rank, so parser fixes cannot change sample membership other than by restoring rank order. |
 | 2026-10-07 | Paper-level metrics with bootstrap CIs. First comparison run on the balanced 1:1 sample (684 human papers) while the 2:1 download continues. |
+| 2026-10-08 | 2:1 sample completed (1,374 papers). Download log rebuilt after the rebase incident; cond-mat stratum filled. Results essentially unchanged from 1:1 (pinpointed citations 63.8% vs 22.5%; difference +41.3 points, 95% CI +39.3 to +43.3). |
 | 2026-10-07 | Plan to normalise reference metadata for both corpora through a common external database before comparing fields. |

@@ -4,7 +4,7 @@ Does AI-generated mathematical research cite different sources, or use its sourc
 
 This project compares the reference lists of the 722 preprints OpenAI released in [openai/math](https://github.com/openai/math) (September–October 2026) with a subject-matched sample of human-written arXiv papers from 2020–2022, before LLM-assisted writing was common.
 
-**Status:** work in progress. Preliminary results use a 1:1 subject-matched human sample (684 papers); the 2:1 sample is being collected. See [`data/analysis/summary.md`](data/analysis/summary.md).
+**Status:** first-pass results on the full 2:1 subject-matched sample (687 OpenAI preprints vs 1,374 human papers). See the [dashboard](https://morrisqa.github.io/ai-math-citations/) or [`data/analysis/summary.md`](data/analysis/summary.md).
 
 ## Dashboard
 
